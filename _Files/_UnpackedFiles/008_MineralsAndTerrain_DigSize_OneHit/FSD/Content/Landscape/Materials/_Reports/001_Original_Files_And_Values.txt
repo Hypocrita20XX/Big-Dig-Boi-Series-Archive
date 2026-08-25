@@ -1,0 +1,900 @@
+File: TM_BedRock
+> PickAxeDigSize is 85
+> HitsNeededToMine is 5
+
+File: TM_BedRock_NoDig
+> PickAxeDigSize is 65
+> HitsNeededToMine is 5
+
+File: TM_Biome_Arid_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_AzureWeald
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_AzureWealdArchs
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_AzureWeald_MagicRocks
+> PickAxeDigSize is 95
+> HitsNeededToMine is 3
+
+File: TM_Biome_AzureWeald_NoDebris
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_AzureWeald_Rockformations
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_AzureWeald_Roots01
+> PickAxeDigSize is 95
+> HitsNeededToMine is 1
+
+File: TM_Biome_AzureWeald_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_AzureWeald_TunnelEventOverride_Tunnel_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_Boneyards_Ossium
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_Boneyard_BonePiles
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_Boneyard_CeilingCarvers
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_Boneyard_FallingBone
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_Boneyard_LargeBones
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_Boneyard_LargeCarvers
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_Boneyard_MediumCarvers
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_Boneyard_Plain
+> PickAxeDigSize is 135
+> HitsNeededToMine is 2
+
+File: TM_Biome_Boneyard_Stalactites
+> PickAxeDigSize is 135
+> HitsNeededToMine is 2
+
+File: TM_Biome_Boneyard_Stalagmites
+> PickAxeDigSize is 135
+> HitsNeededToMine is 2
+
+File: TM_Biome_Boneyard_Stalagnates
+> PickAxeDigSize is 135
+> HitsNeededToMine is 2
+
+File: TM_Biome_Boneyard_Terrain_2
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_Boneyard_Terrain_Carvers
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_Boneyard_Terrain_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_Boneyard_Terrain_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_Boneyard_Toblerone
+> PickAxeDigSize is 135
+> HitsNeededToMine is 2
+
+File: TM_Biome_CausticMire01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_CausticMire01_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_CausticMire01_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_CausticMire02
+> PickAxeDigSize is 135
+> HitsNeededToMine is 1
+
+File: TM_Biome_CausticMire_Flat_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_CausticMire_Geysers
+> PickAxeDigSize is 135
+> HitsNeededToMine is 1
+
+File: TM_Biome_CausticMire_HotSprings
+> PickAxeDigSize is 135
+> HitsNeededToMine is 3
+
+File: TM_Biome_CleanTester01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_CleanTester_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_CrystalCaves_Crystal01
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_CrystalCaves_Crystal02
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_CrystalCaves_Crystal03
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_CrystalCaves_Crystal04
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_CrystalCaves_Crystal05
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_CrystalCaves_DropSpike
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_Biome_CrystalCaves_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_CrystalCaves_Rock01_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_CrystalCaves_Rock01_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_CrystalCave_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_DeepCore_LowFrictionSecret
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_DeepCore_Rock
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_DeepCore_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_DeepCore_Rock_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_DeepCore_Rock_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_DeepCore_Secreted
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_E3trailer_FranExp
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_E3trailer_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_E3trailer_RockFranTest
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_Flesh
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_Flesh_Insides
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_FungusBogs_PlatformMushroom
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_FungusBogs_PlatformMushroom_Stem
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_FungusBogs_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_FungusBogs_Rock01_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_FungusBogs_Rock01_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_FungusBogs_Roots01
+> PickAxeDigSize is 95
+> HitsNeededToMine is 1
+
+File: TM_Biome_FungusBogs_StickyGoo
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_GreenDepths_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_HollowBough
+> PickAxeDigSize is 130
+> HitsNeededToMine is 2
+
+File: TM_Biome_HollowBough_Burnt
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_HollowBough_RootBase
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_HollowBough_Rotten
+> PickAxeDigSize is 140
+> HitsNeededToMine is 1
+
+File: TM_Biome_HollowBough_Sap
+> PickAxeDigSize is 115
+> HitsNeededToMine is 3
+
+File: TM_Biome_HollowBough_ThornBranch_Big
+> PickAxeDigSize is 95
+> HitsNeededToMine is 1
+
+File: TM_Biome_HollowBough_ThornBranch_Small
+> PickAxeDigSize is 95
+> HitsNeededToMine is 1
+
+File: TM_Biome_HollowBough_TunnelEventOverride_Cave
+> PickAxeDigSize is 130
+> HitsNeededToMine is 2
+
+File: TM_Biome_HollowBough_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 130
+> HitsNeededToMine is 2
+
+File: TM_Biome_IceCaves_DeepSnow
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_IceCaves_DropIceSpike
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_Biome_IceCaves_Ice01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_IceCaves_LowFrictionIce
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_IceCaves_PlantPlatforms
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_IceCaves_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_IceCaves_Rock01_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_IceCaves_Rock01_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_IceCaves_Rock_Oasis
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_IceCaves_SnowRock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_InvisTest_AlcalineTropics
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_InvisTest_Bog
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_InvisTest_CausticMire
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_InvisTest_DecayedBough
+> PickAxeDigSize is 130
+> HitsNeededToMine is 2
+
+File: TM_Biome_InvisTest_DecayedBough_Burnt
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_InvisTest_DecayedBough_RootBase
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_InvisTest_DecayedBough_Rotten
+> PickAxeDigSize is 140
+> HitsNeededToMine is 1
+
+File: TM_Biome_InvisTest_DecayedBough_Sap
+> PickAxeDigSize is 115
+> HitsNeededToMine is 3
+
+File: TM_Biome_InvisTest_DecayedBough_ThornBranch_Big
+> PickAxeDigSize is 95
+> HitsNeededToMine is 1
+
+File: TM_Biome_InvisTest_DecayedBough_ThornBranch_Small
+> PickAxeDigSize is 95
+> HitsNeededToMine is 1
+
+File: TM_Biome_InvisTest_GravitationalSerenity
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_InvisTest_HallsOfReflection
+> PickAxeDigSize is 130
+> HitsNeededToMine is 2
+
+File: TM_Biome_InvisTest_Hive
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_InvisTest_Hive_2
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_InvisTest_OrganicInsides
+> PickAxeDigSize is 130
+> HitsNeededToMine is 2
+
+File: TM_Biome_LushDownpour_Rock01
+> PickAxeDigSize is 150
+> HitsNeededToMine is 2
+
+File: TM_Biome_LushDownpour_Rock01_TunnelEventOverride_Cave
+> PickAxeDigSize is 150
+> HitsNeededToMine is 2
+
+File: TM_Biome_LushDownpour_Rock01_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 150
+> HitsNeededToMine is 2
+
+File: TM_Biome_Lush_Dirt
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_Biome_Lush_Rock01
+> PickAxeDigSize is 150
+> HitsNeededToMine is 3
+
+File: TM_Biome_Lush_Rock02
+> PickAxeDigSize is 150
+> HitsNeededToMine is 1
+
+File: TM_Biome_MagmaCaves_AirGeyser
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_MagmaCaves_HotRock
+> PickAxeDigSize is 100
+> HitsNeededToMine is 2
+
+File: TM_Biome_MagmaCaves_LavaGeyser
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_MagmaCaves_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_MagmaCaves_Rock01_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_MagmaCaves_Rock01_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_Plague
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_Plague_AtMeteor
+> PickAxeDigSize is 105
+> HitsNeededToMine is 3
+
+File: TM_Biome_Plague_Dead
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_RadioactiveZone_DeadTree
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_RadioactiveZone_DNA
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_Biome_RadioactiveZone_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_RadioactiveZone_Rock01_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_RadioactiveZone_Rock01_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_RadioactiveZone_Uranium
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_RadioactiveZone_UraniumUnlit
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_SaltCaves_Crystal01
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_SaltCaves_DropSpike
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_Biome_SaltCaves_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_SaltCaves_Rock01_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_SaltCaves_Rock01_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_SaltCaves_WhiteSaltCrystal
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Biome_SaltCaves_WhiteSaltCrystal_Thin
+> PickAxeDigSize is 150
+> HitsNeededToMine is 1
+
+File: TM_Biome_SandblastedCorridors_Rock01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_SandblastedCorridors_Rock01_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_SandblastedCorridors_Rock01_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Biome_SandblastedCorridors_Rock02
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Biome_SpongeCluster
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_SpongeCluster_TunnelEventOverride_Cave
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_SpongeCluster_TunnelEventOverride_Tunnel
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Biome_Tutorial_Rock01
+> PickAxeDigSize is 150
+> HitsNeededToMine is 2
+
+File: TM_Bismor
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_BlueLightCrystal
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_CarveError
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_CarvePlaceholder
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_CarveSolid
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Chimneys
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Coral_A
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Coral_B
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Coral_C
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_Coral_D
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_CoreGem_Growth
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_CoreRift_Bed
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_CoreRift_Crevace
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_CoreRift_Rocks
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_Croppa
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_Crystal01
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Crystal02
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Crystal03
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_DebugCarveEdge
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_DebugCarveInside
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_DebugCarveOutside
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_DefaultBurnt
+> PickAxeDigSize is 125
+> HitsNeededToMine is 2
+
+File: TM_DepletedMorkiteCrust
+> PickAxeDigSize is 85
+> HitsNeededToMine is 5
+
+File: TM_DigsiteAmber
+> PickAxeDigSize is 105
+> HitsNeededToMine is 5
+
+File: TM_Dirt
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_Dirt_AzureWeald
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_Dirt_DeepCore
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_Dirt_GoldTunnel
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_Dirt_HollowBough
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_Dirt_IceCaves
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_Dirt_InvisTest_DecayedBough
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_Dirt_LairTunnel
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_Dirt_SandblastedCorridors
+> PickAxeDigSize is 115
+> HitsNeededToMine is 1
+
+File: TM_Dirt_SwarmerTunnels
+> PickAxeDigSize is 85
+> HitsNeededToMine is 2
+
+File: TM_DreadnoughtEggSurroundings
+> PickAxeDigSize is 150
+> HitsNeededToMine is 1
+
+File: TM_Dystrum
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_EggSurroundings
+> PickAxeDigSize is 150
+> HitsNeededToMine is 1
+
+File: TM_Empty
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_EscortFloor
+> PickAxeDigSize is 105
+> HitsNeededToMine is 3
+
+File: TM_EscortRing_1
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_EscortRing_2
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_EscortRing_3
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_EscortRing_Filler
+> PickAxeDigSize is 95
+> HitsNeededToMine is 3
+
+File: TM_Escort_Claws
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Fossil01
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Fossils
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Generic_Crystal_Healing
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_Generic_Morkite
+> PickAxeDigSize is 115
+> HitsNeededToMine is 1
+
+File: TM_Gold
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_Gold_Melted
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_GreenLightCrystal
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_HardRock
+> PickAxeDigSize is 75
+> HitsNeededToMine is 5
+
+File: TM_Heartstone_CrystalTrap
+> PickAxeDigSize is 120
+> HitsNeededToMine is 2
+
+File: TM_Heartstone_DefensiveCrystal
+> PickAxeDigSize is 120
+> HitsNeededToMine is 2
+
+File: TM_Hollomite
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_HumongousFungus_A
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Iron
+> PickAxeDigSize is 115
+> HitsNeededToMine is 2
+
+File: TM_LavaCrystal
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_Magnite
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_MangroveRock
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Nitra
+> PickAxeDigSize is 115
+> HitsNeededToMine is 1
+
+File: TM_OilShale
+> PickAxeDigSize is 105
+> HitsNeededToMine is 4
+
+File: TM_Phazyonite
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_Plague_MeteorImpact_Hot
+> PickAxeDigSize is 100
+> HitsNeededToMine is 2
+
+File: TM_Plague_MeteorImpact_Tunnel
+> PickAxeDigSize is 100
+> HitsNeededToMine is 2
+
+File: TM_PlatformSlag
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_Quantrite
+> PickAxeDigSize is 105
+> HitsNeededToMine is 1
+
+File: TM_RedLightCrystal
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_ResonanceCrystal_Surrounding
+> PickAxeDigSize is 85
+> HitsNeededToMine is 2
+
+File: TM_RiftBackside
+> PickAxeDigSize is 85
+> HitsNeededToMine is 5
+
+File: TM_Rift_FillMaterial
+> PickAxeDigSize is 85
+> HitsNeededToMine is 5
+
+File: TM_Rock
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_Rock03
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_ShallowPools
+> PickAxeDigSize is 135
+> HitsNeededToMine is 2
+
+File: TM_SpawnedPlatform
+> PickAxeDigSize is 135
+> HitsNeededToMine is 1
+
+File: TM_SpawnedPlatform_BugRepellant
+> PickAxeDigSize is 135
+> HitsNeededToMine is 1
+
+File: TM_SpawnedPlatform_FallDmg_BugRepellant
+> PickAxeDigSize is 135
+> HitsNeededToMine is 1
+
+File: TM_SpawnedPlatform_LowFallDamage
+> PickAxeDigSize is 135
+> HitsNeededToMine is 1
+
+File: TM_TreasureRoom_CrystaFlower_Root
+> PickAxeDigSize is 120
+> HitsNeededToMine is 2
+
+File: TM_TreasureRoom_CrystalGrowth
+> PickAxeDigSize is 120
+> HitsNeededToMine is 1
+
+File: TM_TreasureRoom_CrystalLayer_Rock
+> PickAxeDigSize is 120
+> HitsNeededToMine is 2
+
+File: TM_TunnelAmber
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
+File: TM_TunnelEvent_BoneYard
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_TunnelEvent_BoneYard_Corridor
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_TunnelEvent_BoneYard_LastRoom
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_TunnelEvent_Fallback
+> PickAxeDigSize is 125
+> HitsNeededToMine is 3
+
+File: TM_TunnelEvent_Hidden
+> PickAxeDigSize is 125
+> HitsNeededToMine is 1
+
+File: TM_TunnelEvent_Ossium
+> PickAxeDigSize is 120
+> HitsNeededToMine is 1
+
+File: TM_Umanite
+> PickAxeDigSize is 105
+> HitsNeededToMine is 2
+
