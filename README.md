@@ -1,6 +1,7 @@
-# Program To Create The Big Dig Boi Mod Series
+# Big Dig Boi Mod Series Archive
 
 Here is where I've stored the code that allows me to make and update the Big Dig Boi series of mods for the game [Deep Rock Galactic](https://store.steampowered.com/app/548430/Deep_Rock_Galactic/).
+I've also decided to store all relevant assets here too.
 
 Do not consider this code ready-to-go, I provide this only for reference purposes!\
 Also it's full of jank and bad practices. You've been warned.
