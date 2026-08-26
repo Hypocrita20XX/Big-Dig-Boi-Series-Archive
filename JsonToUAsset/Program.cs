@@ -67,7 +67,7 @@ Dictionary<string, List<float>> originalProperties = new Dictionary<string, List
 
 //For now until I can care a bit more
 //Hardcode the directory of the base game files that have not been augmented
-string originalFileLoc = "F:\\DRG_Modding\\Base Game Files\\FSD-WindowsNoEditor\\FSD\\Content\\Landscape\\Materials\\";
+string originalFileLoc = "F:\\DRG_Modding\\Base Game Files\\FSD\\Content\\Landscape\\Materials\\";
 
 //To streamline the process, initialize some nested Dictionaries so that we can save some data and log those to a file
 //Similar to my standalone program, so it should ouput roughly the same thing
@@ -221,24 +221,10 @@ Console.WriteLine("Verification process will now begin");
 //Formatting
 Console.WriteLine("");
 
-/*
- * Old verify, no longer needed
-//Iterate through any path in shouldVerify, disregarding the false key in this instance
-foreach (string path in shouldVerify[true])
-{
-    //Verify each given path
-    VerifyOriginalFiles(path);
-}
-
-//Now that the base game's files have (hopefully) been verified and the report has been created, we can move on to actually modifying the files
-//Logging
-Console.WriteLine("Verification process has now completed");
-*/
-
 //Logging
 Console.WriteLine("Now each asset's data from the original game's archive will be verified and stored");
 
-VerifyUnalteredArchive();
+VerifyMasterArchive();
 
 Console.WriteLine("Press enter to verify the stored data");
 Console.ReadLine();
@@ -248,10 +234,9 @@ Console.Clear();
 Console.WriteLine("\u001bc\x1b[3J");
 
 //Copying isn't working, and I don't care enough to figure out why
-//So let's do this dumb way: write the same data to a file in all directories
+//So let's do this the dumb way: write the same data to a file in all directories
 foreach (string path in outputPath)
 {
-
     //StreamWriter time
     using (StreamWriter output = new StreamWriter(Path.Combine(path + "\\_Reports", "001_Original_Files_And_Values.txt"), false))
     {
@@ -288,7 +273,6 @@ foreach (string path in outputPath)
     }
 }
 
-
 Console.WriteLine("001_Original_Files_And_Values.txt has been successfully written into the appropriate directories");
 
 
@@ -301,6 +285,43 @@ Console.ReadLine();
 Console.Clear();
 Console.WriteLine("\u001bc\x1b[3J");
 
+//Meh, fine I'll integrate it properly-ish
+//And because I want a switch, here
+//True will prompt you to make a master
+//False skips over this
+bool shouldCreateMaster = false;
+
+if (shouldCreateMaster)
+{
+    Console.WriteLine("Do you want to create a new master archive? (Y/N)");
+    string? input = Console.ReadLine();
+
+    if (input == "Y")
+    {
+        Console.WriteLine("Where would you like the new master files to be stored? (Root directory)");
+        input = Console.ReadLine();
+
+        //Set location for the new master archive
+        string newMasterArchiveDir = input + "\\FSD\\Content\\Landscape\\Materials\\";
+
+        //For making a new master archive
+        Console.WriteLine("New master achive will now be created");
+        Console.WriteLine("Press enter to continue");
+        Console.ReadLine();
+
+        //Clear the console
+        Console.Clear();
+        Console.WriteLine("\u001bc\x1b[3J");
+
+        //Create the archive
+        CreateNewMaster(newMasterArchiveDir);
+
+        //Get out of here
+        return;
+    }
+}
+
+
 Console.WriteLine("Work will now begin on making the desired mod(s)");
 
 //Wait for input
@@ -312,7 +333,6 @@ Console.Clear();
 Console.WriteLine("\u001bc\x1b[3J");
 
 Console.WriteLine("Processing will now begin...");
-
 
 //Create assets based on the user's selection
 //Here we go...
@@ -598,7 +618,7 @@ void GetRequiredInput()
         //Exit the program
         Environment.Exit(0);
     }
-        
+
     //Depending on the desired mods to be created, prompt the user for further information
     //If the user wantes to adjust dig size, then 0, 1, 2, 6, 7, 8 will be selected
     if (whichMod == 0 || whichMod == 1 || whichMod == 2 || whichMod == 6 || whichMod == 7 || whichMod == 8)
@@ -688,354 +708,10 @@ void GetRequiredInput()
     //Wait for input before continuing
     Console.WriteLine("Press any button to continue");
     Console.ReadLine();
-
-    #region Old Verify
-    /*
-    //Clear the console
-    Console.Clear();
-    Console.WriteLine("\u001bc\x1b[3J");
-
-    //Last check, should the original files be verified?
-    //Ideally, every single mod's filer will ultimately contain a _Reports folder with three different text files in them
-    //One of which verifies the contents of the base game's files
-    //So we need to check each mod's directories for the presence of these files, should be fairly straightforward
-    //Just iterate through the given directories and check for the _Reports folder and the text files contained within
-    Console.WriteLine("Checking to see if each given directory has any previous original file reports...");
-
-    //Formatting
-    Console.WriteLine("");
-
-    //List to store file properties for later use
-    //Default value of NONE in case the file doesn't exist
-    string fileProperties = "NONE";
-
-    //Variable to get user input
-    string? userInput;
-
-    //Variable to append the path value
-    string newPath;
-
-    //Variable to check if a file exists
-    bool doesExist = false;
-
-    //To be used with the while loops
-    bool shouldContinue = false;
-
-    //Iterate through the directories
-    foreach (string path in outputPath)
-    {
-        //For simplicity, append \\_Reports" to the provided path
-        newPath = path + "_Reports";
-
-        //If the folder does exist, check if the 001_Original_Files_And_Values.txt file exist
-        if (Directory.Exists(newPath))
-        {
-            //Verify
-            Console.WriteLine(newPath + "\\ exists, checking for the 001_Original_Files_And_Values file...");
-
-            //Get all files, if any, in this directory
-            string[] files = Directory.GetFileSystemEntries(newPath, "*.*", SearchOption.AllDirectories);
-
-            //Iterate through those files, if the array is not empty
-            if (files.Length > 0)
-                foreach (string file in files)
-                    if (file.Contains("001_Original_Files_And_Values.txt"))
-                        doesExist = true;
-
-            //If there are files located in this directory and the one we need is in here, we need to check a few things
-            if (doesExist)
-            {
-                //Logging
-                Console.WriteLine("File exists, checking properties...");
-
-                //Get the files in the folder
-                string[] reportFilesTmp = Directory.GetFiles(newPath);
-
-                //Iterate through them
-                foreach (string reportFile in reportFilesTmp)
-                    //If we've found the necessary file, get when it was last modified
-                    if (Path.GetFileName(reportFile).Contains(reportFileNames[0]))
-                        //Save the data for later
-                        fileProperties = File.GetLastWriteTime(reportFile).ToString();
-
-                //Logging
-                if (fileProperties != "NONE")
-                    Console.WriteLine("Properties successfuly retrieved");
-                else if (fileProperties == "NONE")
-                    Console.WriteLine("Something went wrong, fileProperties value is: " + fileProperties);
-
-                //I don't usually have much luck with while loops, but let's give it a try
-                //Prompt for input until the user gives either a Y or N
-                do
-                {
-                    //Logging
-                    Console.WriteLine("You will now be prompted with each directory and if you want to verify the game files and generate a new report");
-
-                    //Prompt and verify input
-                    do
-                    {
-                        //Request input
-                        Console.WriteLine("Would you like to proceed or skip this process? (Y to proceed, N to skip)");
-
-                        //Get input and because it's being silly, if it's null somehow, just throw nonsense into it
-                        userInput = Console.ReadLine();
-
-                        //if they want to proceed, exit this loop (but not the function)
-                        if (userInput == "Y")
-                        {
-                            //Get out of here (please)
-                            //yes people think goto is icky, but if it works... So what?
-                            //Can't get it to properly exit this otherwise, so yeah
-                            goto NextVerification001;
-                        }
-
-                        //If they want to skip this process, make sure their option is verified
-                        if (userInput == "N")
-                        {
-                            //Logging
-                            Console.WriteLine("Verification of all files for all directories will be skipped");
-
-                            //Just nuke it
-                            return;
-                        }
-                    }
-                    while (!shouldContinue);
-                    {
-                        //If the user put in the correct thing, get out of the loop (hopefully)
-                        if (userInput == "Y" || userInput == "N")
-                        {
-                            //Set to true
-                            shouldContinue = true;
-
-                            //Get out of here (please)
-                            break;
-                        }
-                        //Otherwise, keep looping until they do the thing properly
-                        else
-                        {
-                            //Set to false
-                            shouldContinue = false;
-
-                            //Inform
-                            Console.WriteLine("That's not a Y or N, try again");
-
-                            //Formatting
-                            Console.WriteLine("");
-                        }
-                    }
-
-                    NextVerification001:
-
-                    if (userInput == "Y")
-                    {
-                        //Logging
-                        Console.WriteLine("Current directory is " + newPath);
-
-                        //Request input
-                        Console.WriteLine("Would you like to run the verification process for this directory? (Y/N)");
-
-                        //Reference
-                        Console.WriteLine("> For reference, this file was last modified: " + fileProperties);
-                        Console.WriteLine("> The current date is " + DateTime.Now.ToShortDateString() + ", " + DateTime.Now.ToString("HH:mm:ss tt"));
-
-                        //Get input and provide a value if null
-                        userInput = Console.ReadLine();
-
-                        //Formatting
-                        Console.WriteLine("");
-
-                        //if they want to proceed, exit this loop (but not the function)
-                        if (userInput == "Y")
-                        {
-                            //Get out of here (please)
-                            goto NextVerification002;
-                        }
-
-                        //If they want to skip this process, make sure their option is verified
-                        if (userInput == "N")
-                        {
-                            //Logging
-                            Console.WriteLine("Verification of this file in this directory will be skipped");
-
-                            //Get out of here (please)
-                            //Don't want to exit the function in this case, just the current loop
-                            continue;
-                        }
-                    }
-                }
-                while (!shouldContinue);
-                {
-                    //If the user put in the correct thing, get out of the loop (hopefully)
-                    if (userInput == "Y" || userInput == "N")
-                    {
-                        //Set to true
-                        shouldContinue = true;
-
-                        //Get out of here (please)
-                        break;
-                    }
-                    //Otherwise, keep looping until they do the thing properly
-                    else
-                    {
-                        //Set to false
-                        shouldContinue = false;
-
-                        //Inform
-                        Console.WriteLine("That's not a Y or N, try again");
-
-                        //Formatting
-                        Console.WriteLine("");
-                    }
-                }
-
-            NextVerification002:
-
-                //Check input
-                //If Y, verify and create the report
-                if (userInput == "Y")
-                {
-                    //Formatting
-                    Console.WriteLine("");
-
-                    //Logging
-                    Console.WriteLine("Proceeding with verification of the files and generation of the report in " + newPath);
-
-                    //Formatting
-                    Console.WriteLine("");
-
-                    //Indication that verification should run with the specified path
-                    shouldVerify[true].Add(newPath);
-                }
-                //If N, skip this step
-                else if (userInput == "N")
-                {
-                    //Formatting
-                    Console.WriteLine("");
-
-                    //Logging
-                    Console.WriteLine("Skipping the verification of the files for this directory");
-
-                    //Formatting
-                    Console.WriteLine("");
-
-                    //Wait for input before continuing
-                    Console.WriteLine("Press any button to continue");
-                    Console.ReadLine();
-
-                    //Clear the console
-                    Console.Clear();
-                    Console.WriteLine("\u001bc\x1b[3J");
-
-                    //Skip to the next loop
-                    continue;
-                }
-            }
-            //If there are no files located here, then we can proceed without the prompt to update the file
-            else
-            {
-                //Logging
-                Console.WriteLine("> 001_Original_Files_And_Values has not been created");
-
-                //Request input
-                Console.WriteLine("> The original game files will now be validated, and a report will be generated in " + newPath);
-
-                //Wait for input before continuing
-                Console.WriteLine("Press any button to begin this process");
-                Console.ReadLine();
-
-                //Clear the console
-                Console.Clear();
-                Console.WriteLine("\u001bc\x1b[3J");
-
-                //Logging
-                Console.WriteLine("Verification process will now begin");
-
-                //Formatting
-                Console.WriteLine("");
-
-                //Verify files for this path only
-                //Indication that verification should run with the specified path
-                shouldVerify[true].Add(newPath);
-            }
-        } 
-    }
-    */
-    #endregion
-}
-
-//Specifically for logging to a file
-//Notes which file was checked and what its value was for PickAxeDigSize and HitsNeededToMine
-void VerifyOriginalFiles(string singlePath)
-{
-    //Iterate through all files in the inputPath, logging relevant information for each one to a file (eventually) and to the console
-    foreach (string file in Directory.EnumerateFiles(inputPath, "*.uasset", SearchOption.AllDirectories))
-    {
-        //Create a new UAsset for this file
-        UAsset currentAsset = new UAsset(file, EngineVersion.VER_UE4_27);
-
-        //Get the location of the desired variables
-        NormalExport assetExport = (NormalExport)currentAsset.Exports[0];
-
-        //Get the desired values from assetExport
-        FloatPropertyData digSize = (FloatPropertyData)assetExport["PickAxeDigSize"];
-        IntPropertyData hitsNeeded = (IntPropertyData)assetExport["HitsNeededToMine"];
-
-        //Show which file is being analyzed
-        originalFiles[singlePath][reportFileNames[0]].Add("File " + assetExport.ObjectName + ":");
-        Console.WriteLine("File " + assetExport.ObjectName + ":");
-
-
-        //Check the current file to see if it contains PickAxeDigSize
-        if ((FloatPropertyData)assetExport["PickAxeDigSize"] != null)
-        {
-            originalFiles[singlePath][reportFileNames[0]].Add("* Contains a PickAxeDigSize property with a value of " + digSize.Value);
-            Console.WriteLine("* Contains a PickAxeDigSize property with a value of " + digSize.Value);
-        }
-        else
-        {
-            originalFiles[singlePath][reportFileNames[0]].Add("* PickAxeDigSize is not available, the default value is 105");
-            Console.WriteLine("* PickAxeDigSize is not available, the default value is 105");
-        }
-
-        //Check the current file to see if it contains HitsNeededToMine
-        if ((IntPropertyData)assetExport["HitsNeededToMine"] != null)
-        {
-            originalFiles[singlePath][reportFileNames[0]].Add("* Contains a HitsNeededToMine property with a value of " + hitsNeeded.Value);
-            Console.WriteLine("* Contains a HitsNeededToMine property with a value of " + hitsNeeded.Value);
-        }
-        else
-        {
-            originalFiles[singlePath][reportFileNames[0]].Add("* HitsNeededToMine is not available, the default value is 2");
-            Console.WriteLine("* HitsNeededToMine is not available, the default value is 2");
-        }
-
-        //Because I like formatting
-        //Add some fluff for easier reading
-        originalFiles[singlePath][reportFileNames[0]].Add("--------");
-        Console.WriteLine("--------");
-    }
-
-    //Because this function is called once per loop, we only need to concern ourselves with the logic for the provided singlePath
-    //Write the data to the approriate file
-    WriteToFile(reportFileNames[0], originalFiles);
-
-    //Verify
-    Console.WriteLine("File has been written to " + singlePath + "\\" + reportFileNames[0]);
-
-    //Convenience messages
-    Console.WriteLine("");
-    Console.WriteLine("Press any button to continue");
-
-    //Pause the console, wait for input
-    Console.ReadLine();
-
-    //Clear the console
-    Console.Clear();
-    Console.WriteLine("\u001bc\x1b[3J");
 }
 
 //Evaulates the unaltered base game archive and stores the values for later use
-void VerifyUnalteredArchive()
+void VerifyMasterArchive()
 {
     //Iterate through all files in the inputPath, logging relevant information for each one
     foreach (string file in Directory.EnumerateFiles(originalFileLoc, "*.uasset", SearchOption.AllDirectories))
@@ -1098,6 +774,135 @@ void VerifyUnalteredArchive()
         Console.WriteLine("--------");
     }
 }
+
+
+//For purposes of making a new master archive
+void CreateNewMaster(string newMasterArchiveDir)
+{
+    //Store the asset's data for writing to a file
+    List<string> data = new List<string>();
+
+    //Make sure the specific folders exist
+    if (!Directory.Exists(newMasterArchiveDir))
+    {
+        //Verify
+        Console.WriteLine("Path " + newMasterArchiveDir + " did not exist, creating... ");
+
+        Directory.CreateDirectory(newMasterArchiveDir);
+
+        //Log the directory
+        Console.WriteLine(" > Created " + newMasterArchiveDir);
+    }
+    else
+        //Log the directory
+        Console.WriteLine("** " + newMasterArchiveDir + " already exists");
+
+    //Iterate through all files in the inputPath, logging relevant information for each one
+    foreach (string file in Directory.EnumerateFiles(UserSettings.Default.BaseFilesLocation, "*.uasset", SearchOption.AllDirectories))
+    {
+        //Create a new UAsset for this file
+        UAsset asset = new UAsset(file, EngineVersion.VER_UE4_27);
+
+        //Get the location of the desired variables
+        NormalExport export = (NormalExport)asset.Exports[0];
+
+        //Get the desired values from assetExport
+        FloatPropertyData digSize = (FloatPropertyData)export["PickAxeDigSize"];
+        IntPropertyData hitsNeeded = (IntPropertyData)export["HitsNeededToMine"];
+
+        //Show which file is being analyzed
+        data.Add("File " + export.ObjectName + ":");
+        Console.WriteLine("File " + export.ObjectName + ":");
+
+        //Check to make sure PickAxeDigSize isn't null
+        if ((FloatPropertyData)export["PickAxeDigSize"] != null)
+        {
+            //Get the value from the originalProperties Dictionary
+            float oSize = originalProperties[asset.Exports[0].ObjectName.ToString()][0];
+
+            //Get the value from the asset in question
+            FloatPropertyData nSize = (FloatPropertyData)export["PickAxeDigSize"];
+
+            //If the new size in the given asset isn't the same, it needs reverted to the base game value
+            if (nSize.Value != oSize)
+            {
+                //Logging
+                data.Add("> This file's PickAxeDigSize is not the same as the base game's value: " + nSize.Value + " and should be " + oSize);
+                Console.WriteLine("> This file's PickAxeDigSize is not the same as the base game's value: " + nSize.Value + " and should be " + oSize);
+
+                //Fix: set the asset's PickAxeDigSize to the value it is in the base game
+                nSize.Value = oSize;
+
+                //Logging
+                data.Add("** This file's PickAxeDigSize has been set to the base game's value of " + oSize);
+                Console.WriteLine("** This file's PickAxeDigSize has been set to the base game's value of " + oSize);
+            }
+            else
+            {
+                //Logging
+                data.Add("** This file's PickAxeDigSize is the value it should be (" + oSize + ")");
+                Console.WriteLine("** This file's PickAxeDigSize is the value it should be (" + oSize + ")");
+            }
+        }
+
+        //Check to make sure HitsNeededToMine isn't null
+        if ((IntPropertyData)export["HitsNeededToMine"] != null)
+        {
+            //Get the value from the originalProperties Dictionary
+            int oHits = (int)originalProperties[asset.Exports[0].ObjectName.ToString()][1];
+
+            //Get the value from the asset in question
+            IntPropertyData nHits = (IntPropertyData)export["HitsNeededToMine"];
+
+            //If the new size in the given asset isn't the same, it needs reverted to the base game value
+            if (nHits.Value != oHits)
+            {
+                //Logging
+                data.Add("> This file's HitsNeededToMine is not the same as the base game's value: " + nHits.Value + " and should be " + oHits);
+                Console.WriteLine("> This file's HitsNeededToMine is not the same as the base game's value: " + nHits.Value + " and should be " + oHits);
+
+                //Fix: set the asset's HitsNeededToMine to the value it is in the base game
+                nHits.Value = oHits;
+
+                //Logging
+                data.Add("** This file's HitsNeededToMine has been set to the base game's value of " + oHits);
+                Console.WriteLine("** This file's HitsNeededToMine has been set to the base game's value of " + oHits);
+            }
+            else
+            {
+                //Logging
+                data.Add("** This file's HitsNeededToMine is the value it should be (" + oHits + ")");
+                Console.WriteLine("** This file's HitsNeededToMine is the value it should be (" + oHits + ")");
+            }
+        }
+
+        //Formatting
+        data.Add("---------");
+        Console.WriteLine("---------");
+
+        //Logging
+        Console.WriteLine("Writing " + export.ObjectName + " to " + newMasterArchiveDir);
+
+        //Write the reverted asset to the specificed location
+        asset.Write(newMasterArchiveDir + asset.Exports[0].ObjectName + ".uasset");
+
+        //Logging
+        Console.WriteLine("File has been written");
+    }
+
+    //Write data to file
+    using (StreamWriter output = new StreamWriter(Path.Combine(newMasterArchiveDir, "_Master_Archive_Report.txt"), false))
+    {
+        //Iterate through each line and write it to this file
+        foreach (string line in data)
+        {
+            //Write the line to the file
+            output.WriteLine(line);
+        }
+    }
+
+}
+
 
 //Because the main logic for both terrain and minerals is identical, there's no point copy/pasting all of it into both functions
 //So here's a centralized location for the asset creation logic
@@ -1512,7 +1317,7 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
         {
             //Logging
             excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
-            Console.WriteLine("* " + export.ObjectName +" is not a mineral and will be excluded");
+            Console.WriteLine("* " + export.ObjectName + " is not a mineral and will be excluded");
         }
     }
 
@@ -2601,6 +2406,7 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
                     }
             }
 
+
             //Make sure that the asset is written to the desired directory
             asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
@@ -2842,18 +2648,18 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
                 //Logging
                 Console.WriteLine("* HitsNeededToMine is not readily exposed for this file and will be excluded");
             }
-
-            //Write the asset to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
-
-            //Logging
-            Console.WriteLine("File " + export.ObjectName + " has been saved in: " + outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
         }
+
+        //Write the asset to the desired directory
+        asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+
+        //Logging
+        Console.WriteLine("File " + export.ObjectName + " has been saved in: " + outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
     }
 }
 
 //Write whatever is needed to a file
-void WriteToFile( string reportName, Dictionary<string, Dictionary<string, List<string>>> linesToWrite)
+void WriteToFile(string reportName, Dictionary<string, Dictionary<string, List<string>>> linesToWrite)
 {
     //Logging
     Console.WriteLine("File " + reportName + " is now being written");
