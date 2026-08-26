@@ -2601,7 +2601,6 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
                     }
             }
 
-
             //Make sure that the asset is written to the desired directory
             asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
