@@ -1,2 +1,0 @@
-PickAxeDigSize: 180
-HitsNeededToMine: 1

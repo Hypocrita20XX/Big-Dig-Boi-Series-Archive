@@ -1,5 +1,8 @@
 ** The Mod Contains These Files/Values in Landscape/Materials **
 
+File: TM_Bismor
+* The original value of PickAxeDigSize was 105.
+* The new value is 180.
 File: TM_Croppa
 * The original value of PickAxeDigSize was 115.
 * The new value is 180.
@@ -15,9 +18,27 @@ File: TM_Gold
 File: TM_Gold_Melted
 * The original value of PickAxeDigSize was 115.
 * The new value is 180.
+File: TM_Hollomite
+* The original value of PickAxeDigSize was 105.
+* The new value is 180.
 File: TM_Iron
 * The original value of PickAxeDigSize was 115.
 * The new value is 180.
+File: TM_Magnite
+* The original value of PickAxeDigSize was 105.
+* The new value is 180.
 File: TM_Nitra
 * The original value of PickAxeDigSize was 115.
+* The new value is 180.
+File: TM_OilShale
+* The original value of PickAxeDigSize was 105.
+* The new value is 180.
+File: TM_Phazyonite
+* The original value of PickAxeDigSize was 105.
+* The new value is 180.
+File: TM_Quantrite
+* The original value of PickAxeDigSize was 105.
+* The new value is 180.
+File: TM_Umanite
+* The original value of PickAxeDigSize was 105.
 * The new value is 180.

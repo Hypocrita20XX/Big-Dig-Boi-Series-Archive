@@ -455,7 +455,7 @@ void GetRequiredInput()
     else
     {
         //State the needed input
-        Console.WriteLine("* Enter the root directory where the base game's files are located");
+        Console.WriteLine("* Enter the root directory where the master archive's files are located");
         //Get the input
         string? input = Console.ReadLine();
 
