@@ -2,7 +2,7 @@
 
 This is an archive that contains an amalgamation of base game files and modded files that is needed to make this series of mods.
 
-I ran into a serialization issue with UAssetAPI that prevented me from adding PickAxeDigSize and/or HitsNeededToMine to any file that's missing either of those properties. The solution is what's present in this archive: a compilation of files that have all the necessary properties added to them, at the base game's values, so that they can be modified as needed to contain what value is desired for those two properties.
+I ran into a serialization issue with UAssetAPI that prevented me from adding PickAxeDigSize and/or HitsNeededToMine to any file that doesn't have that property exposed in UAssetGUI. The solution is what's present in this archive: a compilation of files that have all the necessary properties added to them, at the base game's values, so that they can be modified as needed to contain what value is desired for those two properties.
 
 Most of the files are sourced from the game itself while other files are sourced from the following mods:
 1. [Better Digging](https://mod.io/g/drg/m/better-digging) by [Dreyda](https://mod.io/g/drg/u/dreyda)
