@@ -1,5 +1,3 @@
-# Big Dig Boi Mod Series Archive
-
 ![Big Dig Boi Logo](_Assets/bigdigboi_logo_var1_nobg.png)
 
 Here is where I've stored the code that allows me to make and update the Big Dig Boi series of mods for the game [Deep Rock Galactic](https://store.steampowered.com/app/548430/Deep_Rock_Galactic/).
