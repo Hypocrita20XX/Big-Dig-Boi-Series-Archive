@@ -33,9 +33,6 @@ File: TM_Biome_AzureWeald_TunnelEventOverride_Tunnel
 File: TM_Biome_AzureWeald_TunnelEventOverride_Tunnel_Cave
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
-File: TM_Biome_Boneyards_Ossium
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
 File: TM_Biome_Boneyard_BonePiles
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
@@ -107,24 +104,6 @@ File: TM_Biome_CleanTester01
 * The new value is 180.
 File: TM_Biome_CleanTester_Rock01
 * The original value of PickAxeDigSize was 125.
-* The new value is 180.
-File: TM_Biome_CrystalCaves_Crystal01
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Biome_CrystalCaves_Crystal02
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Biome_CrystalCaves_Crystal03
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Biome_CrystalCaves_Crystal04
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Biome_CrystalCaves_Crystal05
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Biome_CrystalCaves_DropSpike
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_Biome_CrystalCaves_Rock01
 * The original value of PickAxeDigSize was 125.
@@ -224,9 +203,6 @@ File: TM_Biome_HollowBough_TunnelEventOverride_Tunnel
 * The new value is 180.
 File: TM_Biome_IceCaves_DeepSnow
 * The original value of PickAxeDigSize was 125.
-* The new value is 180.
-File: TM_Biome_IceCaves_DropIceSpike
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_Biome_IceCaves_Ice01
 * The original value of PickAxeDigSize was 125.
@@ -336,17 +312,8 @@ File: TM_Biome_MagmaCaves_Rock01_TunnelEventOverride_Tunnel
 File: TM_Biome_Plague
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
-File: TM_Biome_Plague_AtMeteor
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
 File: TM_Biome_Plague_Dead
 * The original value of PickAxeDigSize was 125.
-* The new value is 180.
-File: TM_Biome_RadioactiveZone_DeadTree
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Biome_RadioactiveZone_DNA
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_Biome_RadioactiveZone_Rock01
 * The original value of PickAxeDigSize was 125.
@@ -357,18 +324,6 @@ File: TM_Biome_RadioactiveZone_Rock01_TunnelEventOverride_Cave
 File: TM_Biome_RadioactiveZone_Rock01_TunnelEventOverride_Tunnel
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
-File: TM_Biome_RadioactiveZone_Uranium
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Biome_RadioactiveZone_UraniumUnlit
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Biome_SaltCaves_Crystal01
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Biome_SaltCaves_DropSpike
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
 File: TM_Biome_SaltCaves_Rock01
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
@@ -377,9 +332,6 @@ File: TM_Biome_SaltCaves_Rock01_TunnelEventOverride_Cave
 * The new value is 180.
 File: TM_Biome_SaltCaves_Rock01_TunnelEventOverride_Tunnel
 * The original value of PickAxeDigSize was 125.
-* The new value is 180.
-File: TM_Biome_SaltCaves_WhiteSaltCrystal
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_Biome_SaltCaves_WhiteSaltCrystal_Thin
 * The original value of PickAxeDigSize was 150.
@@ -408,12 +360,6 @@ File: TM_Biome_SpongeCluster_TunnelEventOverride_Tunnel
 File: TM_Biome_Tutorial_Rock01
 * The original value of PickAxeDigSize was 150.
 * The new value is 180.
-File: TM_Bismor
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_BlueLightCrystal
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
 File: TM_CarveError
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
@@ -438,47 +384,14 @@ File: TM_Coral_C
 File: TM_Coral_D
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
-File: TM_CoreGem_Growth
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_CoreRift_Bed
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_CoreRift_Crevace
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_CoreRift_Rocks
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
 File: TM_Croppa
 * The original value of PickAxeDigSize was 115.
-* The new value is 180.
-File: TM_Crystal01
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Crystal02
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Crystal03
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_DebugCarveEdge
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_DebugCarveInside
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_DebugCarveOutside
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_DefaultBurnt
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
 File: TM_DepletedMorkiteCrust
 * The original value of PickAxeDigSize was 85.
-* The new value is 180.
-File: TM_DigsiteAmber
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_Dirt
 * The original value of PickAxeDigSize was 115.
@@ -488,9 +401,6 @@ File: TM_Dirt_AzureWeald
 * The new value is 180.
 File: TM_Dirt_DeepCore
 * The original value of PickAxeDigSize was 115.
-* The new value is 180.
-File: TM_Dirt_GoldTunnel
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_Dirt_HollowBough
 * The original value of PickAxeDigSize was 115.
@@ -519,35 +429,14 @@ File: TM_Dystrum
 File: TM_EggSurroundings
 * The original value of PickAxeDigSize was 150.
 * The new value is 180.
-File: TM_Empty
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_EscortFloor
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_EscortRing_1
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_EscortRing_2
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_EscortRing_3
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
 File: TM_EscortRing_Filler
 * The original value of PickAxeDigSize was 95.
-* The new value is 180.
-File: TM_Escort_Claws
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_Fossil01
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
 File: TM_Fossils
 * The original value of PickAxeDigSize was 125.
-* The new value is 180.
-File: TM_Generic_Crystal_Healing
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_Generic_Morkite
 * The original value of PickAxeDigSize was 115.
@@ -558,9 +447,6 @@ File: TM_Gold
 File: TM_Gold_Melted
 * The original value of PickAxeDigSize was 115.
 * The new value is 180.
-File: TM_GreenLightCrystal
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
 File: TM_HardRock
 * The original value of PickAxeDigSize was 75.
 * The new value is 180.
@@ -570,32 +456,17 @@ File: TM_Heartstone_CrystalTrap
 File: TM_Heartstone_DefensiveCrystal
 * The original value of PickAxeDigSize was 120.
 * The new value is 180.
-File: TM_Hollomite
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
 File: TM_HumongousFungus_A
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
 File: TM_Iron
 * The original value of PickAxeDigSize was 115.
 * The new value is 180.
-File: TM_LavaCrystal
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Magnite
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
 File: TM_MangroveRock
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
 File: TM_Nitra
 * The original value of PickAxeDigSize was 115.
-* The new value is 180.
-File: TM_OilShale
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_Phazyonite
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_Plague_MeteorImpact_Hot
 * The original value of PickAxeDigSize was 100.
@@ -605,12 +476,6 @@ File: TM_Plague_MeteorImpact_Tunnel
 * The new value is 180.
 File: TM_PlatformSlag
 * The original value of PickAxeDigSize was 125.
-* The new value is 180.
-File: TM_Quantrite
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
-File: TM_RedLightCrystal
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.
 File: TM_ResonanceCrystal_Surrounding
 * The original value of PickAxeDigSize was 85.
@@ -651,9 +516,6 @@ File: TM_TreasureRoom_CrystalGrowth
 File: TM_TreasureRoom_CrystalLayer_Rock
 * The original value of PickAxeDigSize was 120.
 * The new value is 180.
-File: TM_TunnelAmber
-* The original value of PickAxeDigSize was 105.
-* The new value is 180.
 File: TM_TunnelEvent_BoneYard
 * The original value of PickAxeDigSize was 125.
 * The new value is 180.
@@ -671,7 +533,4 @@ File: TM_TunnelEvent_Hidden
 * The new value is 180.
 File: TM_TunnelEvent_Ossium
 * The original value of PickAxeDigSize was 120.
-* The new value is 180.
-File: TM_Umanite
-* The original value of PickAxeDigSize was 105.
 * The new value is 180.

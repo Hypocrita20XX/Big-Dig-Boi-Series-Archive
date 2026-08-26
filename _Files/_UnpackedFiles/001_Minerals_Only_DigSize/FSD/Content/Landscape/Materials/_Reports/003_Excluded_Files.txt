@@ -137,6 +137,8 @@ File TM_Biome_SpongeCluster.uasset/.uexp
 File TM_Biome_SpongeCluster_TunnelEventOverride_Cave.uasset/.uexp
 File TM_Biome_SpongeCluster_TunnelEventOverride_Tunnel.uasset/.uexp
 File TM_Biome_Tutorial_Rock01.uasset/.uexp
+File TM_Bismor.uasset/.uexp
+File TM_Bismor.uasset/.uexp
 File TM_BlueLightCrystal.uasset/.uexp
 File TM_CarveError.uasset/.uexp
 File TM_CarvePlaceholder.uasset/.uexp
@@ -185,12 +187,22 @@ File TM_GreenLightCrystal.uasset/.uexp
 File TM_HardRock.uasset/.uexp
 File TM_Heartstone_CrystalTrap.uasset/.uexp
 File TM_Heartstone_DefensiveCrystal.uasset/.uexp
+File TM_Hollomite.uasset/.uexp
+File TM_Hollomite.uasset/.uexp
 File TM_HumongousFungus_A.uasset/.uexp
 File TM_LavaCrystal.uasset/.uexp
+File TM_Magnite.uasset/.uexp
+File TM_Magnite.uasset/.uexp
 File TM_MangroveRock.uasset/.uexp
+File TM_OilShale.uasset/.uexp
+File TM_OilShale.uasset/.uexp
+File TM_Phazyonite.uasset/.uexp
+File TM_Phazyonite.uasset/.uexp
 File TM_Plague_MeteorImpact_Hot.uasset/.uexp
 File TM_Plague_MeteorImpact_Tunnel.uasset/.uexp
 File TM_PlatformSlag.uasset/.uexp
+File TM_Quantrite.uasset/.uexp
+File TM_Quantrite.uasset/.uexp
 File TM_RedLightCrystal.uasset/.uexp
 File TM_ResonanceCrystal_Surrounding.uasset/.uexp
 File TM_RiftBackside.uasset/.uexp
@@ -212,3 +224,5 @@ File TM_TunnelEvent_BoneYard_LastRoom.uasset/.uexp
 File TM_TunnelEvent_Fallback.uasset/.uexp
 File TM_TunnelEvent_Hidden.uasset/.uexp
 File TM_TunnelEvent_Ossium.uasset/.uexp
+File TM_Umanite.uasset/.uexp
+File TM_Umanite.uasset/.uexp
