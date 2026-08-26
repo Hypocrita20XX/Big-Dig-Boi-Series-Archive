@@ -1,0 +1,24 @@
+** These Files Were Not Included In This Mod **
+** All Values Remain As Set In The Base Game **
+
+File: TerrainMaterialCollection .uasset/.uexp
+File: CTM_Burned .uasset/.uexp
+File: CTM_CarveError .uasset/.uexp
+File: CTM_CarvePlaceholder .uasset/.uexp
+File: CTM_CarveSolid .uasset/.uexp
+File: CTM_Empty .uasset/.uexp
+File: DBR_Roots .uasset/.uexp
+File: TM_Bismor.uasset/.uexp
+File: TM_Croppa.uasset/.uexp
+File: TM_Dystrum.uasset/.uexp
+File: TM_Generic_Morkite.uasset/.uexp
+File: TM_Gold.uasset/.uexp
+File: TM_Gold_Melted.uasset/.uexp
+File: TM_Hollomite.uasset/.uexp
+File: TM_Iron.uasset/.uexp
+File: TM_Magnite.uasset/.uexp
+File: TM_Nitra.uasset/.uexp
+File: TM_OilShale.uasset/.uexp
+File: TM_Phazyonite.uasset/.uexp
+File: TM_Quantrite.uasset/.uexp
+File: TM_Umanite.uasset/.uexp

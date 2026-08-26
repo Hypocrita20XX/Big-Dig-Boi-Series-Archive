@@ -1,4 +1,5 @@
-﻿/*
+﻿#region License
+/*
 MIT License
 
 Copyright (c) 2026 Hypocrita20XX/MatthiosArcanus
@@ -21,6 +22,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#endregion
 
 //Happy modding miners, rock and stone!
 
@@ -43,7 +45,6 @@ using UAssetAPI.ExportTypes;
 using UAssetAPI.Kismet.Bytecode.Expressions;
 using UAssetAPI.PropertyTypes.Objects;
 using UAssetAPI.UnrealTypes;
-
 
 
 //Time to make this into a fully-fledged program with.. User input!
@@ -258,6 +259,32 @@ Console.ReadLine();
 //Clear the console
 Console.Clear();
 Console.WriteLine("\u001bc\x1b[3J");
+
+//A very small set of files is not included in the Master Archive, so they need added to the excludedFiles Dictionary abomination
+//So iterate through the paths in outputPath and make sure it's added to all the reports
+//If the user has chosen to make a single mod, make sure only that report has these file names added to them
+if (whichMod != 100)
+{
+    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: TerrainMaterialCollection .uasset/.uexp");
+    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: CTM_Burned .uasset/.uexp");
+    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: CTM_CarveError .uasset/.uexp");
+    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: CTM_CarvePlaceholder .uasset/.uexp");
+    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: CTM_CarveSolid .uasset/.uexp");
+    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: CTM_Empty .uasset/.uexp");
+    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: DBR_Roots .uasset/.uexp");
+}
+//Otherwise, make sure all mod-specific exclusion reports contain these file names
+else
+    for (int i = 0; i < 9; i++)
+    {
+        excludedFiles[outputPath[i] + "_Reports"][reportFileNames[2]].Add("File: TerrainMaterialCollection .uasset/.uexp");
+        excludedFiles[outputPath[i] + "_Reports"][reportFileNames[2]].Add("File: CTM_Burned .uasset/.uexp");
+        excludedFiles[outputPath[i] + "_Reports"][reportFileNames[2]].Add("File: CTM_CarveError .uasset/.uexp");
+        excludedFiles[outputPath[i] + "_Reports"][reportFileNames[2]].Add("File: CTM_CarvePlaceholder .uasset/.uexp");
+        excludedFiles[outputPath[i] + "_Reports"][reportFileNames[2]].Add("File: CTM_CarveSolid .uasset/.uexp");
+        excludedFiles[outputPath[i] + "_Reports"][reportFileNames[2]].Add("File: CTM_Empty .uasset/.uexp");
+        excludedFiles[outputPath[i] + "_Reports"][reportFileNames[2]].Add("File: DBR_Roots .uasset/.uexp");
+    }
 
 //Copying isn't working, and I don't care enough to figure out why
 //So let's do this the dumb way: write the same data to a file in all directories
@@ -503,23 +530,23 @@ void GetRequiredInput()
         string[] append = new string[9];
 
         //000_Terrain_Only_DigSize: 0
-        append[0] = input + "\\000_Terrain_Only_DigSize\\FSD\\Content\\Landscape\\Materials\\";
+        append[0] = input + "\\000__BDB__Dig_Bigger_Holes__TE\\FSD\\Content\\Landscape\\Materials\\";
         //001_Minerals_Only_DigSize: 1
-        append[1] = input + "\\001_Minerals_Only_DigSize\\FSD\\Content\\Landscape\\Materials\\";
+        append[1] = input + "\\001__BDB__Dig_Bigger_Holes__ME\\FSD\\Content\\Landscape\\Materials\\";
         //002_MineralsAndTerrain_DigSize: 2
-        append[2] = input + "\\002_MineralsAndTerrain_DigSize\\FSD\\Content\\Landscape\\Materials\\";
+        append[2] = input + "\\002__BDB__Underhill_Deluxe\\FSD\\Content\\Landscape\\Materials\\";
         //003_Terrain_Only_OneHit: 3
-        append[3] = input + "\\003_Terrain_Only_OneHit\\FSD\\Content\\Landscape\\Materials\\";
+        append[3] = input + "\\003__BDB__One_Hit_Wonder_Bois__TE\\FSD\\Content\\Landscape\\Materials\\";
         //004_Minerals_Only_OneHit: 4
-        append[4] = input + "\\004_Minerals_Only_OneHit\\FSD\\Content\\Landscape\\Materials\\";
+        append[4] = input + "\\004__BDB__One_Hit_Wonder_Bois__ME\\FSD\\Content\\Landscape\\Materials\\";
         //005_MineralsAndTerrain_OneHit: 5
-        append[5] = input + "\\005_MineralsAndTerrain_OneHit\\FSD\\Content\\Landscape\\Materials\\";
+        append[5] = input + "\\005__BDB__Rocky_Mountain_Ale\\FSD\\Content\\Landscape\\Materials\\";
         //006_Terrain_Only_DigSize_OneHit: 6
-        append[6] = input + "\\006_Terrain_Only_DigSize_OneHit\\FSD\\Content\\Landscape\\Materials\\";
+        append[6] = input + "\\006__BDB__Speedy_Smol_Sons__TE\\FSD\\Content\\Landscape\\Materials\\";
         //007_Minerals_Only_DigSize_OneHit: 7
-        append[7] = input + "\\007_Minerals_Only_DigSize_OneHit\\FSD\\Content\\Landscape\\Materials\\";
+        append[7] = input + "\\007__BDB__Speedy_Smol_Sons__ME\\FSD\\Content\\Landscape\\Materials\\";
         //008_MineralsAndTerrain_DigSize_OneHit: 8
-        append[8] = input + "\\008_MineralsAndTerrain_DigSize_OneHit\\FSD\\Content\\Landscape\\Materials\\";
+        append[8] = input + "\\008__BDB__Blackout_Stout\\FSD\\Content\\Landscape\\Materials\\";
 
         UserSettings.Default.Terrain_DigSize = append[0];
         UserSettings.Default.Minerals_DigSize = append[1];
@@ -801,7 +828,6 @@ void VerifyMasterArchive()
     }
 }
 
-
 //For purposes of making a new master archive
 void CreateNewMaster(string newMasterArchiveDir)
 {
@@ -928,7 +954,6 @@ void CreateNewMaster(string newMasterArchiveDir)
     }
 
 }
-
 
 //Because the main logic for both terrain and minerals is identical, there's no point copy/pasting all of it into both functions
 //So here's a centralized location for the asset creation logic
@@ -1063,8 +1088,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
         //Check to see if the current file is for a mineral and needs to be skipped
         if (mineralFiles.Contains(export.ObjectName.ToString()))
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* This file is for a mineral and will be excluded");
 
             //Get out of here
@@ -1084,8 +1112,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
 
             if (nHits.Value != oHits)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is not the same as the base game's value.");
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The value should be " + oHits + " but is " + nHits);
                 Console.WriteLine("This file's HitsNeededToMine is not the same as the base game's value");
@@ -1102,6 +1133,10 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
         //Check to make sure digSize isn't already masterDigSize
         if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value == masterDigSize)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is already at the desired size.");
@@ -1117,8 +1152,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
         //Check to see if digSize is bigger than masterDigSize
         if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value > masterDigSize)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is bigger than the desired size.");
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired size.");
             Console.WriteLine("This file's PickAxeDigSize is bigger than the desired size");
@@ -1133,12 +1171,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
         //Check the current file to make sure it contains PickAxeDigSize, otherwise don't save it
         if ((FloatPropertyData)export["PickAxeDigSize"] != null)
         {
-            //Logging
             //If the header for this file doesn't exist, create it
             if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
 
-
+            //Logging
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of PickAxeDigSize was " + digSize.Value + ".");
             Console.WriteLine("* The original value of PickAxeDigSize was " + digSize.Value + ".");
 
@@ -1159,8 +1196,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
         //Added here to make sure HitsNeededToMine is modified if needed
         if ((FloatPropertyData)export["PickAxeDigSize"] == null)
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* PickAxeDigSize are not readily exposed for this file and will be stored in \\_ExcludedFiles\\");
 
             //If the file is in a subdirectory, make sure that's preserved
@@ -1204,8 +1244,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
 
                 if (nHits.Value != oHits)
                 {
+                    //If the header for this file doesn't exist, create it
+                    if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                        modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                     //Logging
-                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is not the same as the base game's value.");
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The value should be " + oHits + " but is " + nHits);
                     Console.WriteLine("This file's HitsNeededToMine is not the same as the base game's value");
@@ -1222,8 +1265,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             //Check to make sure digSize isn't already masterDigSize
             if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value == masterDigSize)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is already at the desired size.");
                 Console.WriteLine("This file's PickAxeDigSize is already at the desired size");
 
@@ -1237,8 +1283,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             //Check to see if digSize is bigger than masterDigSize
             if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value > masterDigSize)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is bigger than the desired size.");
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired size.");
                 Console.WriteLine("This file's PickAxeDigSize is bigger than the desired size");
@@ -1253,11 +1302,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             //Check the current file to make sure it contains PickAxeDigSize, otherwise it needs special handling
             if ((FloatPropertyData)export["PickAxeDigSize"] != null)
             {
-                //Logging
                 //If the header for this file doesn't exist, create it
                 if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
 
+                //Logging
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of PickAxeDigSize was " + digSize.Value + ".");
                 Console.WriteLine("* The original value of PickAxeDigSize was " + digSize.Value + ".");
 
@@ -1293,8 +1342,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
                     Console.WriteLine("> " + newPath + " now exists");
                 }
 
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Verify
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("> " + export.ObjectName + " cannot have PickAxeDigSize added programatically at this time");
                 Console.WriteLine("> it has been excluded and stored in " + newPath + "\\" + export.ObjectName + ".uasset/.uexp for manually editing");
 
@@ -1313,8 +1365,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             //Added here to make sure HitsNeededToMine is modified if needed
             if ((FloatPropertyData)export["PickAxeDigSize"] == null)
             {
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Logging
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("* PickAxeDigSize are not readily exposed for this file and will be stored in \\_ExcludedFiles\\");
 
                 //If the file is in a subdirectory, make sure that's preserved
@@ -1341,8 +1396,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
         //This file is not for a mineral
         else
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* " + export.ObjectName + " is not a mineral and will be excluded");
         }
     }
@@ -1363,8 +1421,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
 
             if (nHits.Value != oHits)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is not the same as the base game's value.");
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The value should be " + oHits + " but is " + nHits);
                 Console.WriteLine("This file's HitsNeededToMine is not the same as the base game's value");
@@ -1381,8 +1442,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
         //Check to make sure digSize isn't already masterDigSize
         if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value == masterDigSize)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is already at the desired size.");
             Console.WriteLine("This file's PickAxeDigSize is already at the desired size");
 
@@ -1396,8 +1460,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
         //Check to see if digSize is bigger than masterDigSize
         if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value > masterDigSize)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is bigger than the desired size.");
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired size.");
             Console.WriteLine("This file's PickAxeDigSize is bigger than the desired size");
@@ -1415,8 +1482,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             //Check to make sure digSize isn't already masterDigSize
             if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value == masterDigSize)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is already at the desired size.");
                 Console.WriteLine("This file's PickAxeDigSize is already at the desired size");
 
@@ -1430,11 +1500,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             //Check the current file to make sure it contains PickAxeDigSize, otherwise it needs special handling
             if ((FloatPropertyData)export["PickAxeDigSize"] != null)
             {
-                //Logging
                 //If the header for this file doesn't exist, create it
                 if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
 
+                //Logging
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of PickAxeDigSize was " + digSize.Value + ".");
                 Console.WriteLine("* The original value of PickAxeDigSize was " + digSize.Value + ".");
 
@@ -1470,8 +1540,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
                     Console.WriteLine("> " + newPath + " now exists");
                 }
 
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Verify
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("> " + export.ObjectName + " cannot have PickAxeDigSize added programatically at this time");
                 Console.WriteLine("> it has been excluded and stored in " + newPath + "\\" + export.ObjectName + ".uasset/.uexp for manually editing");
 
@@ -1492,8 +1565,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             //Check to make sure digSize isn't already masterDigSize
             if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value == masterDigSize)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is already at the desired size.");
                 Console.WriteLine("This file's PickAxeDigSize is already at the desired size");
 
@@ -1507,11 +1583,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             //Check the current file to make sure it contains PickAxeDigSize, otherwise it needs excluded
             if ((FloatPropertyData)export["PickAxeDigSize"] != null)
             {
-                //Logging
                 //If the header for this file doesn't exist, create it
                 if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
 
+                //Logging
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of PickAxeDigSize was " + digSize.Value + ".");
                 Console.WriteLine("* The original value of PickAxeDigSize was " + digSize.Value + ".");
 
@@ -1534,8 +1610,11 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
         //Added here to make sure HitsNeededToMine is modified if needed
         if ((FloatPropertyData)export["PickAxeDigSize"] == null)
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* PickAxeDigSize are not readily exposed for this file and will be stored in \\_ExcludedFiles\\");
 
             //If the file is in a subdirectory, make sure that's preserved
@@ -1576,8 +1655,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
         //Check to see if the current file is for a mineral and needs to be skipped
         if (mineralFiles.Contains(export.ObjectName.ToString()))
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* This file is for a mineral and will be excluded");
 
             //Get out of here
@@ -1597,8 +1679,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
 
             if (nSize.Value != oSize)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is not the same as the base game's value.");
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The value should be " + oSize + " but is " + nSize);
                 Console.WriteLine("This file's PickAxeDigSize is not the same as the base game's value");
@@ -1615,8 +1700,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
         //Check to make sure hitsNeeded isn't already masterHitSize
         if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value == masterHitsNeeded)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is already at the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is already at the desired hits");
 
@@ -1630,8 +1718,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
         //Check to see if hitsNeeded is smaller than masterHitSize, and check to make sure hitsNeeded isn't 1
         if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value < masterHitsNeeded && hitsNeeded.Value != 1)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededTo is smaller than the desired hits.");
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is bigger than the desired hits");
@@ -1646,8 +1737,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
         //Check to make sure digSize isn't already masterDigSize
         if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value == masterHitsNeeded)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is already at the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is already at the desired hits");
 
@@ -1661,11 +1755,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
         //Check the current file to make sure it contains HitsNeededToMine, otherwise don't save it
         if ((IntPropertyData)export["HitsNeededToMine"] != null)
         {
-            //Logging
             //If the header for this file doesn't exist, create it
             if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
 
+            //Logging
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
             Console.WriteLine("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
 
@@ -1686,8 +1780,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
         //Added here to make sure PickAxeDigSize is modified if needed
         if ((IntPropertyData)export["HitsNeededToMine"] == null)
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* HitsNeededToMine are not readily exposed for this file and will be stored in \\_ExcludedFiles\\");
 
             //If the file is in a subdirectory, make sure that's preserved
@@ -1731,8 +1828,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
 
                 if (nSize.Value != oSize)
                 {
+                    //If the header for this file doesn't exist, create it
+                    if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                        modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                     //Logging
-                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is not the same as the base game's value.");
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The value should be " + oSize + " but is " + nSize);
                     Console.WriteLine("This file's PickAxeDigSize is not the same as the base game's value");
@@ -1749,8 +1849,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             //Check to make sure hitSize isn't already masterHitSize
             if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value == masterHitsNeeded)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is already at the desired hits.");
                 Console.WriteLine("This file's HitsNeededToMine is already at the desired hits");
 
@@ -1764,8 +1867,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             //Check to see if hitsNeeded is smaller than masterHitSize, and check to make sure hitsNeeded isn't 1
             if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value < masterHitsNeeded && hitsNeeded.Value != 1)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededTo is smaller than the desired hits.");
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired hits.");
                 Console.WriteLine("This file's HitsNeededToMine is bigger than the desired hits");
@@ -1780,12 +1886,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             //Check the current file to make sure it contains HitsNeededToMine, otherwise it needs special handling
             if ((IntPropertyData)export["HitsNeededToMine"] != null)
             {
-                //Logging
                 //If the header for this file doesn't exist, create it
                 if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
 
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+                //Logging
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
                 Console.WriteLine("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
 
@@ -1821,8 +1926,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
                     Console.WriteLine("> " + newPath + " now exists");
                 }
 
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Verify
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("> " + export.ObjectName + " cannot have HitsNeededToMine added programatically at this time");
                 Console.WriteLine("> it has been excluded and stored in " + newPath + "\\" + export.ObjectName + ".uasset/.uexp for manually editing");
 
@@ -1841,8 +1949,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             //Added here to make sure PickAxeDigSize is modified if needed
             if ((IntPropertyData)export["HitsNeededToMine"] == null)
             {
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Logging
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("* HitsNeededToMine are not readily exposed for this file and will be stored in \\_ExcludedFiles\\");
 
                 //If the file is in a subdirectory, make sure that's preserved
@@ -1884,8 +1995,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
 
             if (nSize.Value != oSize)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is not the same as the base game's value.");
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The value should be " + oSize + " but is " + nSize);
                 Console.WriteLine("This file's PickAxeDigSize is not the same as the base game's value");
@@ -1902,8 +2016,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
         //Check to make sure hitsNeeded isn't already masterHitSize
         if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value == masterHitsNeeded)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is already at the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is already at the desired hits");
 
@@ -1917,8 +2034,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
         //Check to see if hitsNeeded is smaller than masterHitSize, and check to make sure hitsNeeded isn't 1
         if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value < masterHitsNeeded && hitsNeeded.Value != 1)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededTo is smaller than the desired hits.");
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is bigger than the desired hits");
@@ -1936,8 +2056,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             //Check to make sure hitsNeeded isn't already masterHitSize
             if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value == masterHitsNeeded)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is already at the desired size.");
                 Console.WriteLine("This file's HitsNeededToMine is already at the desired size");
 
@@ -1991,8 +2114,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
                     Console.WriteLine("> " + newPath + " now exists");
                 }
 
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Verify
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("> " + export.ObjectName + " cannot have HitsNeededToMine added programatically at this time");
                 Console.WriteLine("> it has been excluded and stored in " + newPath + "\\" + export.ObjectName + ".uasset/.uexp for manually editing");
 
@@ -2036,8 +2162,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             //Otherwise, make a note of it in a file
             else
             {
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Logging
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("* HitsNeededToMine is not readily exposed for this file and will be stored in \\_ExcludedFiles\\");
 
                 //If the file is in a subdirectory, make sure that's preserved
@@ -2066,8 +2195,11 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
         //Added here to make sure PickAxeDigSize is modified if needed
         if ((IntPropertyData)export["HitsNeededToMine"] == null)
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* HitsNeededToMine are not readily exposed for this file and will be stored in \\_ExcludedFiles\\");
 
             //If the file is in a subdirectory, make sure that's preserved
@@ -2111,8 +2243,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         //Check to see if the current file is for a mineral and needs to be skipped
         if (mineralFiles.Contains(export.ObjectName.ToString()))
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* This file is for a mineral and will be excluded");
 
             //Get out of here
@@ -2122,8 +2257,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         //If both properties are null, add it to the exclusions list
         if ((FloatPropertyData)export["PickAxeDigSize"] == null || (IntPropertyData)export["HitsNeededToMine"] == null)
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* PickAxeDigSize and HitsNeededToMine are not readily exposed for this file and will be stored in \\_ExcludedFiles\\");
 
             //If the file is in a subdirectory, make sure that's preserved
@@ -2153,8 +2291,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         //Check to make sure PickAxeDigSize and HitsNeededToMine aren't already masterDigSize and masterHitsNeeded
         if (digSize != null && digSize.Value == masterDigSize && hitsNeeded != null && hitsNeeded.Value == masterHitsNeeded)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine and PickAxeDigSize is already at the desired size.");
             Console.WriteLine("This file's HitsNeededToMine and PickAxeDigSize is already at the desired value");
 
@@ -2168,8 +2309,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         //Check to see if digSize is bigger than masterDigSize
         if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value > masterDigSize)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is bigger than the desired size.");
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired size.");
             Console.WriteLine("This file's PickAxeDigSize is bigger than the desired size");
@@ -2181,8 +2325,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         //Check to see if hitsNeeded is smaller than masterHitSize, and check to make sure hitsNeeded isn't 1
         if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value < masterHitsNeeded && hitsNeeded.Value != 1)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededTo is smaller than the desired hits.");
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is bigger than the desired hits");
@@ -2197,8 +2344,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             //If the asset's current PickAxeDigSize isn't bigger than masterDigSize, proceed as normal
             if (!isPBigger)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of PickAxeDigSize was " + digSize.Value + ".");
                 Console.WriteLine("* The original value of PickAxeDigSize was " + digSize.Value + ".");
 
@@ -2222,8 +2372,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         {
             if (!isHHigher)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
                 Console.WriteLine("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
 
@@ -2248,8 +2401,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         //If both properties are null, add it to the exclusions list
         if ((FloatPropertyData)export["PickAxeDigSize"] == null || (IntPropertyData)export["HitsNeededToMine"] == null)
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* PickAxeDigSize and HitsNeededToMine are not readily exposed for this file and will be stored in \\_ExcludedFiles\\");
 
             //If the file is in a subdirectory, make sure that's preserved
@@ -2282,8 +2438,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             //Check to make sure PickAxeDigSize and HitsNeededToMine aren't already masterDigSize and masterHitsNeeded
             if (digSize != null && digSize.Value == masterDigSize && hitsNeeded != null && hitsNeeded.Value == masterHitsNeeded)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine and PickAxeDigSize is already at the desired size.");
                 Console.WriteLine("This file's HitsNeededToMine and PickAxeDigSize is already at the desired value");
 
@@ -2297,8 +2456,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             //Check to see if digSize is bigger than masterDigSize
             if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value > masterDigSize)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is bigger than the desired size.");
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired size.");
                 Console.WriteLine("This file's PickAxeDigSize is bigger than the desired size");
@@ -2310,8 +2472,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             //Check to see if hitsNeeded is smaller than masterHitSize, and check to make sure hitsNeeded isn't 1
             if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value < masterHitsNeeded && hitsNeeded.Value != 1)
             {
+                //If the header for this file doesn't exist, create it
+                if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                 //Logging
-                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededTo is smaller than the desired hits.");
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired hits.");
                 Console.WriteLine("This file's HitsNeededToMine is bigger than the desired hits");
@@ -2325,8 +2490,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             {
                 if (!isPBigger)
                 {
+                    //If the header for this file doesn't exist, create it
+                    if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                        modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                     //Logging
-                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of PickAxeDigSize was " + digSize.Value + ".");
                     Console.WriteLine("* The original value of PickAxeDigSize was " + digSize.Value + ".");
 
@@ -2357,8 +2525,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
                     Console.WriteLine("> " + newPath + " now exists");
                 }
 
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Verify
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("> " + export.ObjectName + " cannot have PickAxeDigSize added programatically at this time");
                 Console.WriteLine("> it has been excluded and stored in " + newPath + "\\" + export.ObjectName + ".uasset/.uexp for manually editing");
 
@@ -2381,8 +2552,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             {
                 if (!isHHigher)
                 {
+                    //If the header for this file doesn't exist, create it
+                    if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                        modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                     //Logging
-                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
                     Console.WriteLine("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
 
@@ -2413,8 +2587,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
                     Console.WriteLine("> " + newPath + " now exists");
                 }
 
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Verify
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("> " + export.ObjectName + " cannot have PickAxeDigSize added programatically at this time");
                 Console.WriteLine("> it has been excluded and stored in " + newPath + "\\" + export.ObjectName + ".uasset/.uexp for manually editing");
 
@@ -2432,7 +2609,6 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
                     }
             }
 
-
             //Make sure that the asset is written to the desired directory
             asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
@@ -2447,8 +2623,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         //If both properties are null, add it to the exclusions list
         if ((FloatPropertyData)export["PickAxeDigSize"] == null || (IntPropertyData)export["HitsNeededToMine"] == null)
         {
+            //If the entry for this file doesn't exist, create it
+            if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
             //Logging
-            excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
             Console.WriteLine("* PickAxeDigSize and HitsNeededToMine are not readily exposed for this file and will be stored in \\_ExcludedFiles\\");
 
             //If the file is in a subdirectory, make sure that's preserved
@@ -2475,8 +2654,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         //Check to make sure PickAxeDigSize and HitsNeededToMine aren't already masterDigSize and masterHitsNeeded
         if (digSize != null && digSize.Value == masterDigSize && hitsNeeded != null && hitsNeeded.Value == masterHitsNeeded)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine and PickAxeDigSize is already at the desired size.");
             Console.WriteLine("This file's HitsNeededToMine and PickAxeDigSize is already at the desired value");
 
@@ -2490,8 +2672,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         //Check to see if digSize is bigger than masterDigSize
         if ((FloatPropertyData)export["PickAxeDigSize"] != null && digSize.Value > masterDigSize)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is bigger than the desired size.");
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired size.");
             Console.WriteLine("This file's PickAxeDigSize is bigger than the desired size");
@@ -2503,8 +2688,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
         //Check to see if hitsNeeded is smaller than masterHitSize, and check to make sure hitsNeeded isn't 1
         if ((IntPropertyData)export["HitsNeededToMine"] != null && hitsNeeded.Value < masterHitsNeeded && hitsNeeded.Value != 1)
         {
+            //If the header for this file doesn't exist, create it
+            if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
             //Logging
-            modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededTo is smaller than the desired hits.");
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is bigger than the desired hits");
@@ -2521,8 +2709,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             {
                 if (!isPBigger)
                 {
+                    //If the header for this file doesn't exist, create it
+                    if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                        modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                     //Logging
-                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of PickAxeDigSize was " + digSize.Value + ".");
                     Console.WriteLine("* The original value of PickAxeDigSize was " + digSize.Value + ".");
 
@@ -2553,8 +2744,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
                     Console.WriteLine("> " + newPath + " now exists");
                 }
 
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Verify
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("> " + export.ObjectName + " cannot have PickAxeDigSize added programatically at this time");
                 Console.WriteLine("> it has been excluded and stored in " + newPath + "\\" + export.ObjectName + ".uasset/.uexp for manually editing");
 
@@ -2577,8 +2771,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             {
                 if (!isHHigher)
                 {
+                    //If the header for this file doesn't exist, create it
+                    if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                        modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                     //Logging
-                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
                     Console.WriteLine("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
 
@@ -2609,8 +2806,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
                     Console.WriteLine("> " + newPath + " now exists");
                 }
 
+                //If the entry for this file doesn't exist, create it
+                if (!excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Contains("File: " + export.ObjectName + ".uasset/.uexp"))
+                    excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File: " + export.ObjectName + ".uasset/.uexp");
+
                 //Verify
-                excludedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[2]].Add("File " + export.ObjectName + ".uasset/.uexp");
                 Console.WriteLine("> " + export.ObjectName + " cannot have HitsNeededToMine added programatically at this time");
                 Console.WriteLine("> it has been excluded and stored in " + newPath + "\\" + export.ObjectName + ".uasset/.uexp for manually editing");
 
@@ -2636,8 +2836,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             {
                 if (!isPBigger)
                 {
+                    //If the header for this file doesn't exist, create it
+                    if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                        modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                     //Logging
-                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of PickAxeDigSize was " + digSize.Value + ".");
                     Console.WriteLine("* The original value of PickAxeDigSize was " + digSize.Value + ".");
 
@@ -2655,8 +2858,11 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             {
                 if (!isHHigher)
                 {
+                    //If the header for this file doesn't exist, create it
+                    if (!modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Contains("File: " + export.ObjectName))
+                        modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
+
                     //Logging
-                    modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("File: " + export.ObjectName);
                     modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
                     Console.WriteLine("* The original value of HitsNeededToMine was " + hitsNeeded.Value + ".");
 
@@ -2708,6 +2914,16 @@ void WriteToFile(string reportName, Dictionary<string, Dictionary<string, List<s
             }
         }
     }
+}
+
+void PakFile()
+{
+
+}
+
+void ZipFile()
+{
+
 }
 
 //Just in case I need this later

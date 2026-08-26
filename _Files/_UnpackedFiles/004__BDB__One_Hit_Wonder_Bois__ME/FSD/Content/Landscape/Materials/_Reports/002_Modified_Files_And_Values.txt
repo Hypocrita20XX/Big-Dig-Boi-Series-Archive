@@ -1,0 +1,41 @@
+** The Mod Contains These Files/Values in Landscape/Materials **
+
+File: TM_Bismor
+* The original value of HitsNeededToMine was 2.
+* The new value is 1.
+File: TM_Croppa
+* The original value of HitsNeededToMine was 2.
+* The new value is 1.
+File: TM_Dystrum
+* The original value of HitsNeededToMine was 2.
+* The new value is 1.
+File: TM_Generic_Morkite
+* This file's HitsNeededToMine is already at the desired hits.
+File: TM_Gold
+* The original value of HitsNeededToMine was 2.
+* The new value is 1.
+File: TM_Gold_Melted
+* The original value of HitsNeededToMine was 2.
+* The new value is 1.
+File: TM_Hollomite
+* The original value of HitsNeededToMine was 2.
+* The new value is 1.
+File: TM_Iron
+* The original value of HitsNeededToMine was 2.
+* The new value is 1.
+File: TM_Magnite
+* The original value of HitsNeededToMine was 2.
+* The new value is 1.
+File: TM_Nitra
+* This file's HitsNeededToMine is already at the desired hits.
+File: TM_OilShale
+* The original value of HitsNeededToMine was 4.
+* The new value is 1.
+File: TM_Phazyonite
+* The original value of HitsNeededToMine was 2.
+* The new value is 1.
+File: TM_Quantrite
+* This file's HitsNeededToMine is already at the desired hits.
+File: TM_Umanite
+* The original value of HitsNeededToMine was 2.
+* The new value is 1.
