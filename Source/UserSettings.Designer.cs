@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JsonToUAsset {
+namespace BigDigBoi_UAsset_Creation {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -26,7 +26,7 @@ SOFTWARE.
 
 //Happy modding miners, rock and stone!
 
-using JsonToUAsset;
+using BigDigBoi_UAsset_Creation;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Specialized;
@@ -36,19 +36,19 @@ using System.Data.Common;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Reflection.Metadata;
+using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Threading.Channels;
 using System.Transactions;
 using System.Xml;
 using System.Xml.Linq;
-using System.IO.Compression;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.Kismet.Bytecode.Expressions;
 using UAssetAPI.PropertyTypes.Objects;
 using UAssetAPI.UnrealTypes;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 
 //Time to make this into a fully-fledged program with.. User input!
@@ -3041,9 +3041,9 @@ void PakFiles()
 
         //Logging
         Console.WriteLine("Packing file " + outputPath[whichMod] + "...");
-    
+
         //Start the process
-            process.Start();
+        process.Start();
 
         //Throws the command text output into a string
         output = process.StandardOutput.ReadToEnd();
