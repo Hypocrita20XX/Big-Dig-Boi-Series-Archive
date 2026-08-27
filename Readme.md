@@ -3,13 +3,8 @@
 Here is where I've stored the code that allows me to make and update the Big Dig Boi series of mods for the game [Deep Rock Galactic](https://store.steampowered.com/app/548430/Deep_Rock_Galactic/).
 I've also decided to store all relevant assets here too.
 
-Do not consider this code ready-to-go, I provide this only for reference purposes!\
-Also it's full of jank and bad practices. You've been warned.
-
-To-Do: Dependency lists, usage, credits, and probably other stuff I'm forgetting.
-
-
-My mod profile for this game can be found on [Mod.io](https://mod.io/u/hypocrita20xx/).
+**Do not consider this code ready-to-go, I provide this only for reference purposes!
+Also it's full of jank and bad practices. You've been warned.**
 
 The mods themselves can be found here:
 1. [Big Dig Boi - Dig Bigger Holes (Terrain Edition)](https://mod.io/g/drg/m/big-dig-boi-dig-bigger-holes)
@@ -21,3 +16,22 @@ The mods themselves can be found here:
 7. [Big Dig Boi - Speedy Smol Sons (Terrain Edition)](https://mod.io/g/drg/m/big-dig-boi-speedy-smol-sons-terrain-edition)
 8. [Big Dig Boi - Speedy Smol Sons (Mineral Edition)](https://mod.io/g/drg/m/big-dig-boi-speedy-smol-sons-mineral-edition)
 9. [Big Dig Boi - Blackout Stout Edition](https://mod.io/g/drg/m/big-dig-boi-blackout-stout-edition)
+
+## Credits
+
+*First, I want to thank Von for pointing me in the right direction to use [UAssetAPI](https://github.com/atenfyr/UAssetAPI "UAssetAPI"), as well as Enn, 67, and Mitgobla who assisted me further on the Practical DRG Discord server. [UAssetGUI](https://github.com/atenfyr/UAssetGUI "UAssetGUI") was essential to reference/verify the needed properties/values. [DRG Packer](https://github.com/DRG-Modding/tools/blob/9bacb72561a5ce43d84138999bd972158b2b34a0/loose-files/DRGPacker4.27.zip "DRG Packer") is also instrumental in mod creation, and wouldn't be possible without it. To get the files from various mods to make the Master Archive, I used [Modio Direct](https://github.com/Therootexec/ModioDirect "Modio Direct").*
+
+*Thank you again to the aforementioned authors for the mods that helped create the Master Archive (as well as for inspiring me to create this project), and to [Atenfyr](https://github.com/atenfyr "Atenfyr"), [Buckminsterfullerene02](https://github.com/Buckminsterfullerene02 "Buckminsterfullerene02"), [Henri J. Norden](https://github.com/Henri-J-Norden "Henri J. Norden"), [Samamstar](https://github.com/samamstar "Samamstar"), [Trumank](https://github.com/trumank) and [Therootexec](https://github.com/Therootexec "Therootexec") for making/maintaining the tools that make my mod, and many others, possible.*
+
+*Thank you as well to [Pandao](https://github.com/pandao "Pandao") for their [Editor.md project](https://pandao.github.io/editor.md/index.html "Editor.md project") which helped me greatly in making this documentation.*
+
+*Thank you Ghost Ship Games for Deep Rock Galactic.*
+
+*Lastly, thanks to my best friend, who taught me a long time ago the basics of C#. Without that, I wouldn't have been able to make this mod. Also, he's a great dude.*
+
+## Shameless Self-Promotion
+*You can find my various mods and tools on [Nexus Mods](https://www.nexusmods.com/profile/MatthiosArcanus "Nexus Mods") and [Mod io](https://mod.io/u/hypocrita20xx/ "Mod io"). I also have various videos, such as demonstrations and tutorials for my mods/tools, that you can check out on [Youtube](https://www.youtube.com/@hypocritaafterdark).*
+
+
+## License
+*This project and all associated files are licensed under [MIT]([tree/main?tab=MIT-1-ov-file "MIT"](https://github.com/Hypocrita20XX/Big-Dig-Boi-Series-Archive?tab=MIT-1-ov-file)) because I deeply feel that knowledge should be free, and freely shared. If anything I've done for this series of mods has helped you make your own mods, consider throwing a thanks my way, if you get the time.*
