@@ -23,6 +23,7 @@
 - [Creating The Archive](#creating-the-archive)
 - [Creating The Mods](#creating-the-mods)
 - [Diving Into Mass Asset Creation](#diving-into-mass-asset-creation)
+- [Automation](#automation)
 - [Conclusion](#conclusion)
 - [Credits](#credits)
 - [License](#license)
@@ -201,10 +202,99 @@ Note: none of the actual code that handles this logic is optimized, some of it i
 
 Anyways, like I said, the logic of this function carries over to the other functions that handle file modification, ModifyIntValues() (for HitsNeededToMine) and ModifyAssetValues() (for both properties).
 
-The only other thing to note is that all three of these functions run in a few loops that iterate through every file in the Master Archive, with logic to handle which mod(s) the user wants to make. It should be noted that the current version of the program only provides two main options: single mod, or all mods. You can't choose to make only two mods at once, for instance (again, will I fix this? Doubtful).
+It's probably worth mentioning that all three of these functions run in a few loops that iterate through every file in the Master Archive, with logic to handle which mod(s) the user wants to make. It should be noted that the current version of the program only provides two main options: single mod, or all mods. You can't choose to make only two mods at once, for instance (again, will I fix this? Doubtful).
 The result is, as of the current version of the program, a main directory for all mods containing 2,727 files (included 27 reports I have it write for verification) within 72 different folders.
 
 As an aside, if you want to view the raw files, you can check them out [here](Files\WorkingArchive). I wanted this repo to be as complete as possible, so that in the future someone will hopefully have everything they need to do something similar for their own project.
+
+## Automation
+
+Tangentially related to the main purpose of the program itself, I've made a few automation-focused helper functions because I got tired of manually packing and zipping 9 files. It's probably a little too late for me to make much use out of this, because unless something breaks, I'm most likely finished uploading new versions of the mods. As of 8/27/2026, I'm reasonably confident that they're all feature-complete, fully functional, and work as intended.
+Never-the-less, I felt that this was a worthwhile addition for anyone else that might need this information.
+
+With any asset creation operation, at the end, all files will automatically be packed and then stored in their own zip file. The core of this is handled in three new functions: PakFiles(), ZipFiles(), and MoveToFolder(). These are located right at the very end of Program.cs.
+The main logic of PakFiles() is as follows (in psuedocode):
+```c#
+get mainPath = directory of main project folder;
+create command prompt process and assign it to \\repak.exe;
+
+if (whichMod != 100)
+	mainPath = outputPath[whichMod];
+	fullPath = "\"" + outputPath[whichMod];
+	pass argument to command prompt: " pack " + fullPath;
+	start command prompt;
+	get name of mod;
+
+if (whichMod == 100)
+	iterate through each path in outputPath
+		mainPath = outputPath[whichMod];
+		fullPath = "\"" + outputPath[whichMod];
+		pass argument to command prompt: " pack " + fullPath;
+		start command prompt;
+		get name of mod;
+```
+To make this function work, I had to use (trumank's)[https://github.com/trumank] (repak)[https://github.com/trumank/repak] tool instead of DRG Packer and interface with its executable through the command prompt. I really tried to get it to work with DRG packer, but in the end, it just would not cooperate. Because the code to do this is integral to the function working as intended, I'll share a stripped-down version of the actual code.
+```c#
+ //Get the executable located in _Main
+ process.StartInfo.FileName = mainPathP5 + "\\repak.exe";
+ //Best I can figure, this makes it so that everything happens in the main window
+ process.StartInfo.RedirectStandardOutput = true;
+ //Make sure the repak.exe runs in an elevated prompt
+ //I don't know why this is necessary on my system, but it is
+ process.StartInfo.Verb = "runas";
+
+ //Assign the outputPath to a new variable with formatting for command prompt usage
+ fullPath = "\"" + outputPath[whichMod];
+
+ //Create the argument needed to make this mod's pak file
+ process.StartInfo.Arguments = " pack " + fullPath;
+
+ //Start the process
+ process.Start();
+
+ //Throws the command text output into a string
+ output = process.StandardOutput.ReadToEnd();
+
+ //Wait until stuff finishes
+ process.WaitForExit();
+
+```
+It's worth mentioning that to make this work, I put repak.exe in my root mod folder for this project. You can do whatever you want, but I found that doing this made things easier for me.
+There are two things that I should highlight from the above code: the first is *process.StartInfo.Verb = "runas"* and the second is *fullPath = "\"" + outputPath[whichMod]*. The first makes it so that the command prompt is run as an administrator. For whatever reason, I could not get the thing to run an executable until I did this. The second is something I'm not sure I can explain fully, but is essential to making this work. 
+The translation of this basically reads as "F:\DRG_Modding\Mods\BigDigBoi Series\_Main\000__BDB__Dig_Bigger_Holes__TE if you're trying to make mod 0.
+This confuses me because in all other cases where I've needed to pass a path to the command prompt, I've had to make sure it was formatting as "path to thing/path to thing" when the path contains spaces. Notice the last quotation mark in that example. As far as I can tell, the code ultimately omits that final quotation mark in its output, and as you can see, my path has a space in it. How does it work? I honestly couldn't tell you. But again, it has to have that, or this doesn't work.
+Coding is weird. There's an explanation somewhere, but I couldn't find it.
+Long story short, just add "\"" + [path] to your string that you pass to the argument and you should be fine, somehow.
+
+The next piece of the automation puzzle is ZipFiles(). Unlike the above, the logic in this function is straightforward enough, and without any enigmas found so far in the code. The logic goes like this:
+- Accept an input for your mainPath and a list of pak files
+- Iterate through those pak files found in your mainPath
+- Create a new zip file containing only that pak file
+- Repeat until all pak files are contained in its own zip file
+
+The only other interesting bit about this is that I've decided to move away from traditional versioning for these zip files, instead appending the local date and time to the end of the file name. I couldn't be bothered to figure out a way to integrate that easily while still maintaining the level of automation I wanted (perhaps query the public mod page for the live file's version? Mint does it, so it's certainly doable - but nothing I care to investigate and implement).
+
+The last function is MoveToFolder() which, if I'm being honest, only caters to my particular need for specificity and organization. It just moves the created paks and zips into their own subdirectory, /_Paks and /_Zips, respectively. The only interesting bit of code in there (in my opinion) is how I handle deleting old archives. Because of that whole aforementioned date-appending thing, finding old zips by name is... Tricky. You can go in there, look for files that contain a certain part of the name, or just look for files in general, or... A fair few things, really. None are as simple as just deleting the thing and starting over. The code to this is as follows, and is short enough that I have no issue sharing it here:
+```c#
+if (!Directory.Exists(path + subDir))
+{
+	//Create the directory
+	Directory.CreateDirectory(path + subDir);
+}
+else
+{
+	//Delete the directory
+	Directory.Delete(path + subDir + "\\", recursive: true);
+
+	//Create the directory
+	Directory.CreateDirectory(path + subDir + "\\");
+}
+```
+The trick to making it work is the recursive flag. As far as I understand, without that, Directory.Delete can only delete an empty folder, and throws an exception if something is in there. With that flag though, it iterates through all files and folders, deleting as it goes, before finally deleting the main folder itself.
+Quick, simple, effective. I love it.
+
+I can't imagine I'll be adding much more code to this program anymore, so I feel pretty confident with what I've covered, that it's as complete of an overview as I can manage.
+
 
 ## Conclusion
 
