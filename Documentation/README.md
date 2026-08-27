@@ -37,11 +37,11 @@
 
 ### The Required Files
 
-- [The Master Archive Located In _Assets](_Files/_MasterArchive "The Master Archive Located in _Assets")
+- [The Master Archive Located In /Files](Files/MasterArchive "The Master Archive Located in /Files")
 - A Copy Of The Unpacked Original Game Files
 
 ## Overview
-Broadly, what my program does is take the user's input for their desired PickAxeDigSize and/or HitsNeededToMine (based on which mod(s) they want to make) and then uses that to read a modified version of the base game's files so that the desired changes are reflected across all relevant assets contained in that directory. Some files are intentionally excluded because their data structure differed from the mods I wanted to alter. More details are located in the Master Archive's [readme](_Files/_MasterArchive/README.md).
+Broadly, what my program does is take the user's input for their desired PickAxeDigSize and/or HitsNeededToMine (based on which mod(s) they want to make) and then uses that to read a modified version of the base game's files so that the desired changes are reflected across all relevant assets contained in that directory. Some files are intentionally excluded because their data structure differed from the mods I wanted to alter. More details are located in the Master Archive's [readme](Files/MasterArchive/README.md).
 
 ### The Master Archive
 
@@ -204,7 +204,7 @@ Anyways, like I said, the logic of this function carries over to the other funct
 The only other thing to note is that all three of these functions run in a few loops that iterate through every file in the Master Archive, with logic to handle which mod(s) the user wants to make. It should be noted that the current version of the program only provides two main options: single mod, or all mods. You can't choose to make only two mods at once, for instance (again, will I fix this? Doubtful).
 The result is, as of the current version of the program, a main directory for all mods containing 2,727 files (included 27 reports I have it write for verification) within 72 different folders.
 
-As an aside, if you want to view the raw files, you can check them out [here](_Files\_UnpackedFiles). I wanted this repo to be as complete as possible, so that in the future someone will hopefully have everything they need to do something similar for their own project.
+As an aside, if you want to view the raw files, you can check them out [here](Files\WorkingArchive). I wanted this repo to be as complete as possible, so that in the future someone will hopefully have everything they need to do something similar for their own project.
 
 ## Conclusion
 
@@ -217,7 +217,7 @@ It is my hope that what I've detailed here can help you better understand how to
 
 Happy modding miners, rock and stone!
 
-![Big Dig Boi Logo](/_Assets/bigdigboi_logo_var1_nobg.png)
+![Big Dig Boi Logo](/Assets/bigdigboi_logo_var1_nobg.png)
 
 ## Credits
 
