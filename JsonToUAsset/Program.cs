@@ -3012,7 +3012,7 @@ void PakFiles()
     //Best I can figure, this makes it so that everything happens in the main window
     process.StartInfo.RedirectStandardOutput = true;
     //Make sure the repak.exe runs in an elevated prompt
-    //I don't know why this is neccessary on my system, but it is
+    //I don't know why this is necessary on my system, but it is
     process.StartInfo.Verb = "runas";
 
     //If the user wants only a single mod to be made
