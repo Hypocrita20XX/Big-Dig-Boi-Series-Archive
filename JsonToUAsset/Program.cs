@@ -3045,7 +3045,7 @@ void PakFiles()
         //Start the process
             process.Start();
 
-        //Throws the command text ouyput into a string
+        //Throws the command text output into a string
         output = process.StandardOutput.ReadToEnd();
 
         //Wait until stuff finishes
@@ -3091,7 +3091,7 @@ void PakFiles()
             //Start the process
             process.Start();
 
-            //Throws the command text ouyput into a string
+            //Throws the command text output into a string
             output = process.StandardOutput.ReadToEnd();
 
             //Wait until stuff finishes
