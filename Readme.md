@@ -3,8 +3,10 @@
 Here is where I've stored the code that allows me to make and update the Big Dig Boi series of mods for the game [Deep Rock Galactic](https://store.steampowered.com/app/548430/Deep_Rock_Galactic/).
 I've also decided to store all relevant assets here too.
 
-**Do not consider this code ready-to-go, I provide this only for reference purposes!
-Also it's full of jank and bad practices. You've been warned.**
+**Do not consider this code ready-to-go, I provide this only for reference purposes!**<br />
+**Also it's full of jank and bad practices. You've been warned.**
+
+**Against my better judgement, I've made executables for the program. These are also provided as-is and I make no promises that they will work as intended, or that they won't do something bad to your computer.**
 
 The mods themselves can be found here:
 1. [Big Dig Boi - Dig Bigger Holes (Terrain Edition)](https://mod.io/g/drg/m/big-dig-boi-dig-bigger-holes)
@@ -31,6 +33,10 @@ The mods themselves can be found here:
 
 ## Shameless Self-Promotion
 *You can find my various mods and tools on [Nexus Mods](https://www.nexusmods.com/profile/MatthiosArcanus "Nexus Mods") and [Mod io](https://mod.io/u/hypocrita20xx/ "Mod io"). I also have various videos, such as demonstrations and tutorials for my mods/tools, that you can check out on [Youtube](https://www.youtube.com/@hypocritaafterdark).*
+
+
+## No AI Use Disclaimer
+*No part of these mods, the program, or related assets were made in part or in whole, from concept to completion, with the use of AI. In theory, it's just another tool, but in practice the implementation of AI has serious moral, ethical, and ecological failings, and I will do my best to abstain from participating in the AI scene as much as possible until those issues are rectified in a satisfactory way. All code was created without AI assistance. All images are actual images either taken in-game or made by myself in Photoshop. All text related to this program and these was written without AI assistance. All videos were recorded by myself of myself playing the game using OBS, without the use of AI filters or AI editing.*
 
 
 ## License

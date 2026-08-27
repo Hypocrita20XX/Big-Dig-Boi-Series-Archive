@@ -26,6 +26,7 @@
 - [Automation](#automation)
 - [Conclusion](#conclusion)
 - [Credits](#credits)
+- [No AI Use Disclaimer](#no-ai-use-disclaimer)
 - [License](#license)
 
 ### The Required Tools
@@ -324,6 +325,8 @@ Happy modding miners, rock and stone!
 ## Shameless Self-Promotion
 *You can find my various mods and tools on [Nexus Mods](https://www.nexusmods.com/profile/MatthiosArcanus "Nexus Mods") and [Mod io](https://mod.io/u/hypocrita20xx/ "Mod io"). I also have various videos, such as demonstrations and tutorials for my mods/tools, that you can check out on [Youtube](https://www.youtube.com/@hypocritaafterdark).*
 
+## No AI Use Disclaimer
+*No part of these mods, the program, or related assets were made in part or in whole, from concept to completion, with the use of AI. In theory, it's just another tool, but in practice the implementation of AI has serious moral, ethical, and ecological failings, and I will do my best to abstain from participating in the AI scene as much as possible until those issues are rectified in a satisfactory way. All code was created without AI assistance. All images are actual images either taken in-game or made by myself in Photoshop. All text related to this program and these was written without AI assistance. All videos were recorded by myself of myself playing the game using OBS, without the use of AI filters or AI editing.*
 
 ## License
 *This project and all associated files are licensed under [MIT]([tree/main?tab=MIT-1-ov-file "MIT"](https://github.com/Hypocrita20XX/Big-Dig-Boi-Series-Archive?tab=MIT-1-ov-file)) because I deeply feel that knowledge should be free, and freely shared. If anything I've done for this series of mods has helped you make your own mods, consider throwing a thanks my way, if you get the time.*

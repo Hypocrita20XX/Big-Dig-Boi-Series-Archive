@@ -1,6 +1,10 @@
 # Source Code And Project Files
 
-Here is where the program and its source code lives. I'm not going to provide a ready-to-run executable, so if you want to use this as-is (and you probably shouldn't) then you'll need to make sure a few things are in place first.<br />
+Here is where the program and its source code lives.<br />
+
+**Against my better judgement, I've decided to make executables for the program. Check out the [Basic Operation](#basic-operation) section for instructions on how to use it. The instructions are the same if using it from source.**<br />
+
+If you want to use this code as-is (and you probably shouldn't) then you'll need to make sure a few things are in place first.<br />
 
 I say that you probably shouldn't run this as provided because this program was made for internal use. No exception handling, minimal input checks, and less-than-stellar logging all make this program kind of a pain to use if you don't know its intricacies.<br />
 
@@ -14,6 +18,7 @@ Nevertheless, because I know that this program works and because I know it's a l
 - [Basic Operation](#basic-operation)
 - [Conclusion](#conclusion)
 - [Credits](#credits)
+- [No AI Use Disclaimer](#no-ai-use-disclaimer)
 - [License](#license)
 
 ### What I Needed To Make This Program
@@ -120,7 +125,7 @@ Hit enter to close the program and enjoy your fancy new mods!
 ## Conclusion
 
 So if you entered everything exactly as needed exactly as you intended, every mod will have the modified files it needs with the changes you entered. Otherwise, it probably crashed and you're cursing me for making such a mess of a program (see that whole provided as-is thing I mentioned previously).<br />
-There's a fair bit going on under the hood, so if you would like more information, check out the [documentation](/Documentation/Readme.md) and if you just want to poke around, you can view the [source itself](/Source/Program.cs).<br />
+There's a fair bit going on under the hood, so if you would like more information, check out the [documentation](/Documentation/Readme.md) and if you just want to poke around, you can view the [source itself](/Source/Project/Program.cs).<br />
 
 So long as you're mindful of this program's inadequacies, you shouldn't have too many problems getting it to work. I did the best I could, but the base of what I know regarding C# was taught to me by a friend, and everything from there has been self-taught, so you're going to get whatever you get when it comes to my programming projects (apologies for that, by the way).<br />
 All current versions and variations of the mods in the series have been made with it though, so it can't be all bad, right?<br />
@@ -146,6 +151,8 @@ Happy modding miners, rock and stone!
 ## Shameless Self-Promotion
 *You can find my various mods and tools on [Nexus Mods](https://www.nexusmods.com/profile/MatthiosArcanus "Nexus Mods") and [Mod io](https://mod.io/u/hypocrita20xx/ "Mod io"). I also have various videos, such as demonstrations and tutorials for my mods/tools, that you can check out on [Youtube](https://www.youtube.com/@hypocritaafterdark).*
 
+## No AI Use Disclaimer
+*No part of these mods, the program, or related assets were made in part or in whole, from concept to completion, with the use of AI. In theory, it's just another tool, but in practice the implementation of AI has serious moral, ethical, and ecological failings, and I will do my best to abstain from participating in the AI scene as much as possible until those issues are rectified in a satisfactory way. All code was created without AI assistance. All images are actual images either taken in-game or made by myself in Photoshop. All text related to this program and these was written without AI assistance. All videos were recorded by myself of myself playing the game using OBS, without the use of AI filters or AI editing.*
 
 ## License
 *This project and all associated files are licensed under [MIT](https://github.com/Hypocrita20XX/Big-Dig-Boi-Series-Archive/tree/main?tab=MIT-1-ov-file) because I deeply feel that knowledge should be free, and freely shared. If anything I've done for this series of mods has helped you make your own mods, consider throwing a thanks my way, if you get the time.*
