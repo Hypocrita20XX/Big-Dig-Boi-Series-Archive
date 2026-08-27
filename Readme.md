@@ -19,6 +19,8 @@ The mods themselves can be found here:
 8. [Big Dig Boi - Speedy Smol Sons (Mineral Edition)](https://mod.io/g/drg/m/big-dig-boi-speedy-smol-sons-mineral-edition)
 9. [Big Dig Boi - Blackout Stout Edition](https://mod.io/g/drg/m/big-dig-boi-blackout-stout-edition)
 
+You can also here the pak files [here](/Files/Working_Archive/Paks) in this repository, and if you want a variation of the mods, you can find those [here](/Files/Working_Archive/Zips/Variations).
+
 ## Credits
 
 *First, I want to thank Von for pointing me in the right direction to use [UAssetAPI](https://github.com/atenfyr/UAssetAPI "UAssetAPI"), as well as Enn, 67, and Mitgobla who assisted me further on the Practical DRG Discord server. [UAssetGUI](https://github.com/atenfyr/UAssetGUI "UAssetGUI") was essential to reference/verify the needed properties/values. [DRG Packer](https://github.com/DRG-Modding/tools/blob/9bacb72561a5ce43d84138999bd972158b2b34a0/loose-files/DRGPacker4.27.zip "DRG Packer") is also instrumental in mod creation, and wouldn't be possible without it. To get the files from various mods to make the Master Archive, I used [Modio Direct](https://github.com/Therootexec/ModioDirect "Modio Direct").*
