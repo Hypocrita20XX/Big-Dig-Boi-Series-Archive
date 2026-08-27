@@ -42,7 +42,7 @@
 - A Copy Of The Unpacked Original Game Files
 
 ## Overview
-Broadly, what my program does is take the user's input for their desired PickAxeDigSize and/or HitsNeededToMine (based on which mod(s) they want to make) and then uses that to read a modified version of the base game's files so that the desired changes are reflected across all relevant assets contained in that directory. Some files are intentionally excluded because their data structure differed from the mods I wanted to alter. More details are located in the Master Archive's [readme](Files/MasterArchive/README.md).
+Broadly, what my program does is take the user's input for their desired PickAxeDigSize and/or HitsNeededToMine (based on which mod(s) they want to make) and then uses that to read a modified version of the base game's files so that the desired changes are reflected across all relevant assets contained in that directory. Some files are intentionally excluded because their data structure differed from the mods I wanted to alter. More details are located in the Master Archive's [readme](Files/MasterArchive/Readme.md).
 
 ### The Master Archive
 
@@ -205,7 +205,7 @@ Anyways, like I said, the logic of this function carries over to the other funct
 It's probably worth mentioning that all three of these functions run in a few loops that iterate through every file in the Master Archive, with logic to handle which mod(s) the user wants to make. It should be noted that the current version of the program only provides two main options: single mod, or all mods. You can't choose to make only two mods at once, for instance (again, will I fix this? Doubtful).
 The result is, as of the current version of the program, a main directory for all mods containing 2,727 files (included 27 reports I have it write for verification) within 72 different folders.
 
-As an aside, if you want to view the raw files, you can check them out [here](Files\WorkingArchive). I wanted this repo to be as complete as possible, so that in the future someone will hopefully have everything they need to do something similar for their own project.
+As an aside, if you want to view the raw files, you can check them out [here](Files\Working_Archive). I wanted this repo to be as complete as possible, so that in the future someone will hopefully have everything they need to do something similar for their own project.
 
 ## Automation
 
@@ -298,7 +298,7 @@ I can't imagine I'll be adding much more code to this program anymore, so I feel
 
 ## Conclusion
 
-It's worth noting that I haven't gone over every bit of code in the program, only what is most relevant to writing modified assets. If you would like, you can check out the full source [here](JsonToUAsset/Program.cs).
+It's worth noting that I haven't gone over every bit of code in the program, only what is most relevant to writing modified assets. If you would like, you can check out the full source [here](Source/Program.cs).
 
 From time to time, I may modify the program either for optimization purposes, to add in new features, or reduce the jank to more reasonable levels. If so, I'll try to make sure this documentation stays-up-to-date with anything that's relevant.
 
