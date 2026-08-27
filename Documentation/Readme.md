@@ -38,7 +38,7 @@
 
 ### The Required Files
 
-- [The Master Archive Located In /Files](Files/MasterArchive "The Master Archive Located in /Files")
+- [The Master Archive Located In /Files](Files/Master_Archive "The Master Archive Located in /Files")
 - A Copy Of The Unpacked Original Game Files
 
 ## Overview
