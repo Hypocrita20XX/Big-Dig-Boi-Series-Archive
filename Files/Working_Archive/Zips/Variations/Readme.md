@@ -4,7 +4,8 @@ This is an archive for every zip for each pak in the Big Dig Boi series with var
 
 There are three variants, all changing PickAxeDigSize:
 - One which changes it to a value of 225
-- One which changes it to 325.
-- One which changes it to 1000.
+- One which changes it to 325
+- One which changes it to 1000
+- One which Changes it to 90001 (amusing, but you die from fall damage, and then the game crashes)
 
 To-do: Is more information really needed?

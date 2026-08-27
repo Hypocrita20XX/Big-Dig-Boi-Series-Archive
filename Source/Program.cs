@@ -564,6 +564,9 @@ void GetRequiredInput()
         //Create the final originalFileLoc needed
         originalFileLoc = originalFileLoc + "\\FSD\\Content\\Landscape\\Materials\\";
 
+        //Store it
+        UserSettings.Default.BaseFilesLocation = originalFileLoc;
+
         //State the needed input
         Console.WriteLine("* Enter the path where all projects should be stored");
         //Get the input
