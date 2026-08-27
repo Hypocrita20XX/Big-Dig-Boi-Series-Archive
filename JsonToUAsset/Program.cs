@@ -33,6 +33,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection.Metadata;
@@ -40,11 +41,14 @@ using System.Threading.Channels;
 using System.Transactions;
 using System.Xml;
 using System.Xml.Linq;
+using System.IO.Compression;
 using UAssetAPI;
 using UAssetAPI.ExportTypes;
 using UAssetAPI.Kismet.Bytecode.Expressions;
 using UAssetAPI.PropertyTypes.Objects;
 using UAssetAPI.UnrealTypes;
+using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 
 
 //Time to make this into a fully-fledged program with.. User input!
@@ -109,6 +113,13 @@ Dictionary<string, Dictionary<string, List<string>>> originalFiles = new Diction
 Dictionary<string, Dictionary<string, List<string>>> modifiedFiles = new Dictionary<string, Dictionary<string, List<string>>>();
 Dictionary<string, Dictionary<string, List<string>>> excludedFiles = new Dictionary<string, Dictionary<string, List<string>>>();
 
+//Dictionary for the soon-to-be-created paks
+//Stores the path (key) and the name (value) of each file
+//No abominations here, just a regular Dictionary (for now)
+//I lied, it needs to be an abomination, changed to Dictionary<string, List<string>>
+//Key needs to be the same, but the values need to vary
+Dictionary<string, List<string>> pakFiles = new Dictionary<string, List<string>>();
+
 //Initialize some variables for PickAxeDigSize and HitsNeededToMine
 FloatPropertyData digSize = new FloatPropertyData();
 //Populate with default value
@@ -132,6 +143,10 @@ hitsNeeded.Value = 2;
 //008_MineralsAndTerrain_DigSize_OneHit: 8
 //All: 100
 int whichMod;
+
+//Ideally I wouldn't modify whichMod, but for now, here's a bandaid fix until I can care more than I currently do
+//Store whichMod in here when it is first set so we have it for later
+int whichModMem;
 
 //Master dig size variable
 float masterDigSize = -1;
@@ -374,7 +389,7 @@ if (shouldCreateMaster)
     }
 }
 
-
+//Logging
 Console.WriteLine("Work will now begin on making the desired mod(s)");
 
 //Wait for input
@@ -387,9 +402,26 @@ Console.WriteLine("\u001bc\x1b[3J");
 
 Console.WriteLine("Processing will now begin...");
 
+//Implement that bandaid fix baby
+whichModMem = whichMod;
+
 //Create assets based on the user's selection
 //Here we go...
 CreateAssets();
+
+//Stick it on there real good
+whichMod = whichModMem;
+
+//Create the neccessary pak files
+PakFiles();
+
+//Logging
+Console.WriteLine("All desired operations have completed successfully");
+Console.WriteLine("Mod(s) have been packed and a zip file has been created for each one");
+Console.WriteLine("This program will now close");
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("Big Big Holes For Big Big Bois(TM)");
 
 
 //Prompts and other logic to get the needed user input for later processing
@@ -2916,14 +2948,362 @@ void WriteToFile(string reportName, Dictionary<string, Dictionary<string, List<s
     }
 }
 
-void PakFile()
+//Convenience function because I'm sick of manually packing everything
+void PakFiles()
 {
+    //Initialize a variable to hold the final path
+    string fullPath = "";
+    //Initialize a variable to hold the output of the command prompt process
+    string output = "";
 
+    //Nest parent-getting abomination coming up
+    //Initialize what we need
+    string? mainpath = "";
+    string mainPathP1 = "";
+    string mainPathP2 = "";
+    string mainPathP3 = "";
+    string mainPathP4 = "";
+    string mainPathP5 = "";
+
+    //I'm getting too tired for this...
+    string thatNameThough = "";
+
+    //Create a new process
+    Process process = new Process();
+
+    //Instead of hardcoding the path to the executable, I'm going to do this to get /_Main
+    //Probably a better way to do this, but it works, so... Eh, I can't bothered to look any further
+    //Make sure whichMod isn't 100
+    if (whichMod != 100)
+    {
+        //Get the specified path
+        mainpath = Path.GetDirectoryName(outputPath[whichMod]);
+    }
+    //Otherwise, just get the first path in the list
+    else
+    {
+        //Get a generic path that will still do what we need
+        mainpath = Path.GetDirectoryName(outputPath[0]);
+    }
+
+    //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\Content\\Landscape
+    mainPathP1 = Directory.GetParent(mainpath ?? "").FullName;
+    //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\Content\\
+    mainPathP2 = Directory.GetParent(mainPathP1).FullName;
+    //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\
+    mainPathP3 = Directory.GetParent(mainPathP2).FullName;
+    //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\
+    mainPathP4 = Directory.GetParent(mainPathP3).FullName;
+    //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main
+    mainPathP5 = Directory.GetParent(mainPathP4).FullName;
+
+    //Clear the console
+    Console.Clear();
+    Console.WriteLine("\u001bc\x1b[3J");
+
+    //Logging
+    Console.WriteLine("Pak file(s) will now be created for the specified mod(s)");
+
+    //Make mainPathP5 the Dictiolist's new key, initializing its List
+    pakFiles.Add(mainPathP5, new List<string>());
+
+    //Get the executable located in _Main
+    process.StartInfo.FileName = mainPathP5 + "\\repak.exe";
+    //Best I can figure, this makes it so that everything happens in the main window
+    process.StartInfo.RedirectStandardOutput = true;
+    //Make sure the repak.exe runs in an elevated prompt
+    //I don't know why this is neccessary on my system, but it is
+    process.StartInfo.Verb = "runas";
+
+    //If the user wants only a single mod to be made
+    if (whichMod != 100)
+    {
+        //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\Content\\Landscape\\Materials
+        mainpath = Path.GetDirectoryName(outputPath[whichMod]);
+        //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\Content\\Landscape
+        mainPathP1 = Directory.GetParent(mainpath ?? "").FullName;
+        //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\Content\\
+        mainPathP2 = Directory.GetParent(mainPathP1).FullName;
+        //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\
+        mainPathP3 = Directory.GetParent(mainPathP2).FullName;
+        //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\
+        mainPathP4 = Directory.GetParent(mainPathP3).FullName;
+
+        //Assign the above mess to a single string
+        //Note: I don't fully understand why "\"" + is needed only on the beginning, but not at the end
+        //At least in my brain, seems like it would make the path something like "F:\DRG_Modding\Mods\BigDigBoi Series\_Main
+        //instead of "F:\DRG_Modding\Mods\BigDigBoi Series\_Main" which is how spaces are properly handled in the command prompt
+        //I don't know, it just works, so I'm going with it
+        fullPath = "\"" + outputPath[whichMod];
+
+        //Create the argument needed to make this mod's pak file
+        process.StartInfo.Arguments = " pack " + fullPath;
+
+        //Logging
+        Console.WriteLine("Packing file " + outputPath[whichMod] + "...");
+    
+        //Start the process
+            process.Start();
+
+        //Throws the command text ouyput into a string
+        output = process.StandardOutput.ReadToEnd();
+
+        //Wait until stuff finishes
+        process.WaitForExit();
+
+        //Write the stuff to the console
+        Console.WriteLine(output);
+
+        //Hopefully get the folder name sandwiched between /_Main and /FSD
+        thatNameThough = Path.GetFileName(Path.GetDirectoryName(mainPathP3)) ?? "Cat Nonsense";
+
+        //Add the pak to the pakFiles Dictiolist
+        pakFiles[mainPathP5].Add(thatNameThough);
+
+    }
+    //Otherwise if they want to make all the mods
+    else
+        //Iterate through each path
+        for (int i = 0; i < outputPath.Count; i++)
+        {
+            //Probably a better way to do this, but it works, so... Eh
+            //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\Content\\Landscape\\Materials
+            mainpath = Path.GetDirectoryName(outputPath[i]);
+            //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\Content\\Landscape
+            mainPathP1 = Directory.GetParent(mainpath ?? "").FullName;
+            //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\Content\\
+            mainPathP2 = Directory.GetParent(mainPathP1).FullName;
+            //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\FSD\\
+            mainPathP3 = Directory.GetParent(mainPathP2).FullName;
+            //F:\\DRG_Modding\\Mods\\BigDigBoi Series\\_Main\\008__BDB__Blackout_Stout\\
+            mainPathP4 = Directory.GetParent(mainPathP3).FullName;
+
+            //Assign the above mess to a single string
+            //Yep, still no idea why this works
+            fullPath = "\"" + mainPathP4;
+
+            //Logging
+            Console.WriteLine("Packing file " + outputPath[i] + "...");
+
+            //Create the argument needed to make this mod's pak file
+            process.StartInfo.Arguments = " pack " + fullPath;
+
+            //Start the process
+            process.Start();
+
+            //Throws the command text ouyput into a string
+            output = process.StandardOutput.ReadToEnd();
+
+            //Wait until stuff finishes
+            process.WaitForExit();
+
+            //Write the stuff to the console
+            Console.WriteLine(output);
+
+            //I'm getting too tired for this...
+            //Hopefully get the folder name sandwiched between /_Main and /FSD
+            thatNameThough = Path.GetFileName(Path.GetDirectoryName(mainPathP3)) ?? "Cat Nonsense";
+
+            //Add the pak to the pakFiles Dictiolist
+            pakFiles[mainPathP5].Add(thatNameThough);
+        }
+
+    //Clear the console
+    Console.Clear();
+    Console.WriteLine("\u001bc\x1b[3J");
+
+    //Logging
+    Console.WriteLine("File(s) have been packed");
+
+    //Move the paks to a new folder
+    MoveToFolder(pakFiles, "\\_Paks", ".pak");
+
+    //Wait for input
+    Console.WriteLine("Press any button to continue");
+    Console.ReadLine();
+
+    //Create a zip archive for these pak files
+    ZipFiles(mainPathP5, pakFiles);
+
+    //Wait for input
+    Console.WriteLine("Press any button to continue");
+    Console.ReadLine();
+
+    //Clear the console
+    Console.Clear();
+    Console.WriteLine("\u001bc\x1b[3J");
 }
 
-void ZipFile()
+//Convenience function because I'm sick of manually archiving everything
+void ZipFiles(string mainPath, Dictionary<string, List<string>> paks)
 {
+    //Clear the console
+    Console.Clear();
+    Console.WriteLine("\u001bc\x1b[3J");
 
+    //Need a new Dictiolist to store zip file info
+    Dictionary<string, List<string>> zips = new Dictionary<string, List<string>>();
+    //Iniitalize that thing
+    zips.Add(mainPath, new List<string>());
+
+    //Get the current date and time, IE 11/19/2012 10:57 AM
+    string dateTime = DateTimeOffset.Now.ToString("g");
+    //Initialize a string for the new file name
+    string newName = "";
+
+    //Iterate through the given files
+    foreach (string file in paks[mainPath])
+    {
+        //Logging
+        Console.WriteLine("Preparing " + file + " for archiving in ZIP format");
+
+        //Need to replace /, :, and spaces with _ and start it off with __
+        newName = file + "__" + Regex.Replace(dateTime, @"[/,:,' ']", "_");
+
+        //Logging
+        Console.WriteLine("For versioning, file's name has been changed to " + newName);
+
+        //Open a new file stream
+        using (FileStream zipFile = new FileStream(mainPath + "\\" + newName + ".zip", FileMode.Create))
+        {
+            //Prepare to create a zip archive
+            using (ZipArchive zip = new ZipArchive(zipFile, ZipArchiveMode.Update))
+            {
+                //Create an entry in the zip for this file, with the new date/time-appended name
+                zip.CreateEntryFromFile(mainPath + "\\_Paks\\" + file + ".pak", newName + ".pak");
+            }
+        }
+
+        //Logging
+        Console.WriteLine("> New zip file has been created: " + newName + ".zip" + " temporarily located in " + mainPath + "\\_Paks");
+
+        //Add this file to the zips Dictiolist
+        zips[mainPath].Add(newName);
+    }
+
+    //*Sigh* I have to... Won't be satisfied unless I do...
+    //Going to make this make an AIO archive for sharing with others (IE Discord servers)
+    //Better than throwing 9 paks into a message and calling it a day
+    if (whichMod == 100)
+    {
+        //Make a new name for this bad boi
+        string aioName = "Big_Dig_Bois_AIO_Bonanza" + "__" + Regex.Replace(dateTime, @"[/,:,' ']", "_"); ;
+
+        //Open a new file stream
+        using (FileStream zipFile = new FileStream(mainPath + "\\" + aioName + ".zip", FileMode.Create))
+        {
+            //Prepare to create a zip archive
+            using (ZipArchive zip = new ZipArchive(zipFile, ZipArchiveMode.Update))
+            {
+                //Iterate through the given files
+                foreach (string file in paks[mainPath])
+                {
+                    //Logging
+                    Console.WriteLine("Preparing " + file + " for archiving in ZIP format");
+
+                    //Create an entry in the zip for this file
+                    zip.CreateEntryFromFile(mainPath + "\\_Paks\\" + file + ".pak", file + ".pak");
+                }
+            }
+
+            //Logging
+            Console.WriteLine("> New AIO zip file has been created: " + aioName + ".zip" + " temporarily located in " + mainPath + "\\_Paks");
+
+            //Add this file to the zips Dictiolist
+            zips[mainPath].Add(aioName);
+        }
+    }
+
+    //Logging
+    Console.WriteLine("All zip files have been created");
+    Console.WriteLine("Press any button to continue");
+
+    //Wait for input
+    Console.ReadLine();
+
+    //Move the zips to a new location
+    MoveToFolder(zips, "\\_Zips", ".zip");
+}
+
+//Cleanup function because I crave organization
+//Moves the created paks/zips/whatever else I might want in the future into their own folder
+void MoveToFolder(Dictionary<string, List<string>> archives, string subDir, string ex)
+{
+    //Clear the console
+    Console.Clear();
+    Console.WriteLine("\u001bc\x1b[3J");
+
+    //Logging
+    Console.WriteLine("Preparing file(s) that will be moved to a new directory");
+
+    //Iterate through whatever paths may be stored as a key
+    foreach (string path in archives.Keys)
+    {
+        //Logging
+        Console.WriteLine("Looking for files in " + path);
+
+        //Iterate through whatever file names may be stored as a value for this key
+        foreach (string name in archives[path])
+        {
+            //Logging
+            Console.WriteLine("Analyzing " + name);
+
+            //The desired folder may not exist,so let's do that
+            if (!Directory.Exists(path + subDir))
+            {
+                //Logging
+                Console.WriteLine(path + subDir + " does not exist, creating now");
+
+                //Create the directory
+                Directory.CreateDirectory(path + subDir);
+
+                //Logging
+                Console.WriteLine(path + subDir + " created");
+            }
+            //However, if it does exist, it could contain old files, and those need deleted
+            else
+            {
+                //Logging
+                Console.WriteLine(path + subDir + " exists");
+
+                //Logging
+                Console.WriteLine("> " + path + subDir + " will now be deleted to make sure no old files persist");
+
+                //Considering that the name of each zip file everything this runs is unique,
+                //I think the simplest solution is deleting the entire subdirectory and remaking it
+                Directory.Delete(path + subDir + "\\", recursive: true);
+
+                //Logging
+                Console.WriteLine("> " + path + subDir + " has been deleted");
+
+                //Create the directory
+                Directory.CreateDirectory(path + subDir + "\\");
+
+                //Logging
+                Console.WriteLine("> " + path + subDir + " has now been recreated");
+            }
+        }
+    }
+
+    //Logging
+    Console.WriteLine("File(s) will now be copied into )" + subDir);
+
+    //Iterate through whatever paths may be stored as a key again
+    foreach (string path in archives.Keys)
+    {
+        //Iterate through whatever file names may be stored as a value for this key
+        foreach (string name in archives[path])
+        {
+            //Logging
+            Console.WriteLine("Moving " + name + " into " + path + "\\" + name);
+
+            //Move the pak to the new location
+            File.Move(path + "\\" + name + ex, path + subDir + "\\" + name + ex);
+
+            //Logging
+            Console.WriteLine("> " + name + " has been successfully moved");
+        }
+    }
 }
 
 //Just in case I need this later
