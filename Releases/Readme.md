@@ -1,6 +1,6 @@
 # Releases
 
-Against my better judgement, I've made some executables for the program.<br />
+_Against my better judgement, I've made some executables for the program._<br />
 
 **Disclaimer: These are provided as-is and I make no promises that they will work, and I will not be providing support for them! They are provided only as a convenience, and it is up to you, the end-user, to use the program [as described here](/Source/Readme.md) and follow the instructions exactly. As stated elsewhere, this program was intended only for internal use, and not the general public. Use at your own discretion and when something breaks, I cannot help you figure out why!**<br />
 
