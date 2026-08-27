@@ -96,9 +96,9 @@ mineralFiles[13] = "TM_Umanite";
 //Stored as a float because converting float to an int is easier
 Dictionary<string, List<float>> originalProperties = new Dictionary<string, List<float>>();
 
-//For now until I can care a bit more
-//Hardcode the directory of the base game files that have not been augmented
-string originalFileLoc = "F:\\DRG_Modding\\Base Game Files\\FSD\\Content\\Landscape\\Materials\\";
+//For now until I can care a bit more, hardcode the directory of the base game files that have not been augmented
+//Ok fine now I care more, needs to be done anyway
+string originalFileLoc = "";
 
 //To streamline the process, initialize some nested Dictionaries so that we can save some data and log those to a file
 //Similar to my standalone program, so it should ouput roughly the same thing
@@ -437,6 +437,8 @@ void GetRequiredInput()
         //Populate the neccessary variables with the values in the settings file
         inputPath = UserSettings.Default.BaseFilesLocation;
 
+        originalFileLoc = UserSettings.Default.MasterArchiveLocation;
+
         outputPath.Add(UserSettings.Default.Terrain_DigSize);
         outputPath.Add(UserSettings.Default.Minerals_DigSize);
         outputPath.Add(UserSettings.Default.MineralsAndTerrain_DigSize);
@@ -539,19 +541,28 @@ void GetRequiredInput()
     //If not, prompt for each directory and make sure it's saved for next time
     else
     {
+        //We can do this better
+        //Just get the root directory you silly person
+
         //State the needed input
         Console.WriteLine("* Enter the root directory where the master archive's files are located");
         //Get the input
         string? input = Console.ReadLine();
 
-        string bgRootDir = input + "\\FSD\\Content\\Landscape\\Materials\\";
+        //Create the final maRootDir needed
+        string maRootDir = input + "\\FSD\\Content\\Landscape\\Materials\\";
 
         //Store the input
-        UserSettings.Default.BaseFilesLocation = bgRootDir;
-        inputPath = bgRootDir;
+        UserSettings.Default.MasterArchiveLocation = maRootDir;
+        inputPath = maRootDir;
 
-        //We can do this better
-        //Just get the root directory you silly person
+        //State the needed input
+        Console.WriteLine("* Enter the root directory where the unedited base game files are located");
+        //Get the input
+        originalFileLoc = Console.ReadLine() ?? "Cat nonsense";
+
+        //Create the final originalFileLoc needed
+        originalFileLoc = originalFileLoc + "\\FSD\\Content\\Landscape\\Materials\\";
 
         //State the needed input
         Console.WriteLine("* Enter the path where all projects should be stored");
@@ -712,6 +723,7 @@ void GetRequiredInput()
         Console.WriteLine("How big do you want PickAxeDigSize to be?");
         Console.WriteLine("* Base game default value: 105");
         Console.WriteLine("* My original value: 225");
+        Console.WriteLine("* The public mods' value: 180");
         Console.WriteLine("* For reference, drills have a dig size of 150 (depth) and 200/200 (width/height)");
 
         //Store input in tmp string

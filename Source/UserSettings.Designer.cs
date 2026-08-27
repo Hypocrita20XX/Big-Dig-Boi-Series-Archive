@@ -142,5 +142,17 @@ namespace BigDigBoi_UAsset_Creation {
                 this["MineralsAndTerrain_DigSize_OneHit"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MasterArchiveLocation {
+            get {
+                return ((string)(this["MasterArchiveLocation"]));
+            }
+            set {
+                this["MasterArchiveLocation"] = value;
+            }
+        }
     }
 }
