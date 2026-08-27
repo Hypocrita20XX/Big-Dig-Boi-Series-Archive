@@ -141,4 +141,4 @@ Happy modding miners, rock and stone!
 
 
 ## License
-*This project and all associated files are licensed under [MIT](tree/main?tab=MIT-1-ov-file "MIT") because I deeply feel that knowledge should be free, and freely shared. If anything I've done for this series of mods has helped you make your own mods, consider throwing a thanks my way, if you get the time.*
+*This project and all associated files are licensed under [MIT](https://github.com/Hypocrita20XX/Big-Dig-Boi-Series-Archive/tree/main?tab=MIT-1-ov-file) because I deeply feel that knowledge should be free, and freely shared. If anything I've done for this series of mods has helped you make your own mods, consider throwing a thanks my way, if you get the time.*
