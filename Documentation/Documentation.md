@@ -233,7 +233,7 @@ if (whichMod == 100)
 		start command prompt;
 		get name of mod;
 ```
-To make this function work, I had to use (trumank's)[https://github.com/trumank] (repak)[https://github.com/trumank/repak] tool instead of DRG Packer and interface with its executable through the command prompt. I really tried to get it to work with DRG packer, but in the end, it just would not cooperate. Because the code to do this is integral to the function working as intended, I'll share a stripped-down version of the actual code.
+To make this function work, I had to use [trumank's](https://github.com/trumank) [repak](https://github.com/trumank/repak) tool instead of DRG Packer and interface with its executable through the command prompt. I really tried to get it to work with DRG packer, but in the end, it just would not cooperate. Because the code to do this is integral to the function working as intended, I'll share a stripped-down version of the actual code.
 ```c#
  //Get the executable located in _Main
  process.StartInfo.FileName = mainPathP5 + "\\repak.exe";
@@ -313,7 +313,7 @@ Happy modding miners, rock and stone!
 
 *First, I want to thank Von for pointing me in the right direction to use [UAssetAPI](https://github.com/atenfyr/UAssetAPI "UAssetAPI"), as well as Enn, 67, and Mitgobla who assisted me further on the Practical DRG Discord server. [UAssetGUI](https://github.com/atenfyr/UAssetGUI "UAssetGUI") was essential to reference/verify the needed properties/values. [DRG Packer](https://github.com/DRG-Modding/tools/blob/9bacb72561a5ce43d84138999bd972158b2b34a0/loose-files/DRGPacker4.27.zip "DRG Packer") is also instrumental in mod creation, and wouldn't be possible without it. To get the files from various mods to make the Master Archive, I used [Modio Direct](https://github.com/Therootexec/ModioDirect "Modio Direct").*
 
-*Thank you again to the aforementioned authors for the mods that helped create the Master Archive (as well as for inspiring me to create this project), and to [Atenfyr](https://github.com/atenfyr "Atenfyr"), [Buckminsterfullerene02](https://github.com/Buckminsterfullerene02 "Buckminsterfullerene02"), [Henri J. Norden](https://github.com/Henri-J-Norden "Henri J. Norden"), [Samamstar](https://github.com/samamstar "Samamstar"), and [Therootexec](https://github.com/Therootexec "Therootexec") for making/maintaining the tools that make my mod, and many others, possible.*
+*Thank you again to the aforementioned authors for the mods that helped create the Master Archive (as well as for inspiring me to create this project), and to [Atenfyr](https://github.com/atenfyr "Atenfyr"), [Buckminsterfullerene02](https://github.com/Buckminsterfullerene02 "Buckminsterfullerene02"), [Henri J. Norden](https://github.com/Henri-J-Norden "Henri J. Norden"), [Samamstar](https://github.com/samamstar "Samamstar"),[Trumank](https://github.com/trumank) and [Therootexec](https://github.com/Therootexec "Therootexec") for making/maintaining the tools that make my mod, and many others, possible.*
 
 *Thank you as well to [Pandao](https://github.com/pandao "Pandao") for their [Editor.md project](https://pandao.github.io/editor.md/index.html "Editor.md project") which helped me greatly in making this documentation.*
 
