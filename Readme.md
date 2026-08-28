@@ -6,7 +6,7 @@ I've also decided to store all relevant assets here too.
 **Do not consider this code ready-to-go, I provide this only for reference purposes!**<br />
 **Also it's full of jank and bad practices. You've been warned.**
 
-**Against my better judgement, I've made executables for the program. These are also provided as-is and I make no promises that they will work as intended, or that they won't do something bad to your computer.**
+**Against my better judgement, I've made executables for the program. These are also provided as-is and I make no promises that they will work as intended, or that they won't do something bad to your computer. Please read this [basic operation guide](/Source/Readme.md#basic-operation) before you try running the program!**
 
 The mods themselves can be found here:
 1. [Big Dig Boi - Dig Bigger Holes (Terrain Edition)](https://mod.io/g/drg/m/big-dig-boi-dig-bigger-holes)
