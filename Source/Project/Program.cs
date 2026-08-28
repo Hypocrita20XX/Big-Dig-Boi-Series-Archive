@@ -100,6 +100,11 @@ Dictionary<string, List<float>> originalProperties = new Dictionary<string, List
 //Ok fine now I care more, needs to be done anyway
 string originalFileLoc = "";
 
+//For whatever reason, when this particular file gets written, its odd capitalization doesn't get carried over
+//Which means this one file won't work
+//So here's a fix: assign the name manually
+string resonanceCrystalNameFix = "TM_REsonanceCrystal_Surrounding.uasset";
+
 //To streamline the process, initialize some nested Dictionaries so that we can save some data and log those to a file
 //Similar to my standalone program, so it should ouput roughly the same thing
 //The following reports are not generated because I realized that they are redundant:
@@ -1189,8 +1194,17 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is already at the desired size.");
             Console.WriteLine("This file's PickAxeDigSize is already at the desired size");
 
-            //If so, copy it as-is to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+
 
             //Get out of here
             return;
@@ -1208,8 +1222,15 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired size.");
             Console.WriteLine("This file's PickAxeDigSize is bigger than the desired size");
 
-            //If so, copy it as-is to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
             //Get out of here
             return;
@@ -1233,9 +1254,18 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The new value is " + digSize.Value + ".");
             Console.WriteLine("* The new value is " + digSize.Value + ".");
 
-            //Write the asset to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //Write the asset to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //Write the asset to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+
+            //Logging
             Console.WriteLine("File " + export.ObjectName + " has been saved in: " + outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
         }
 
@@ -1267,8 +1297,16 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             if (!Directory.Exists(finalPath))
                 Directory.CreateDirectory(finalPath);
 
-            //Write the asset to the desired directory for later editing and stuff
-            asset.Write(finalPath + export.ObjectName + ".uasset");
+
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + resonanceCrystalNameFix);
+            }
+            else
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + asset.Exports[0].ObjectName + ".uasset");
         }
     }
 
@@ -1497,8 +1535,16 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is already at the desired size.");
             Console.WriteLine("This file's PickAxeDigSize is already at the desired size");
 
-            //If so, copy it as-is to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
             //Get out of here
             return;
@@ -1515,6 +1561,7 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is bigger than the desired size.");
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired size.");
             Console.WriteLine("This file's PickAxeDigSize is bigger than the desired size");
+
 
             //If so, copy it as-is to the desired directory
             asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
@@ -1562,6 +1609,7 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The new value is " + digSize.Value + ".");
                 Console.WriteLine("* The new value is " + digSize.Value + ".");
 
+
                 //Write the asset to the desired directory
                 asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
@@ -1595,7 +1643,7 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
                 Console.WriteLine("> " + export.ObjectName + " cannot have PickAxeDigSize added programatically at this time");
                 Console.WriteLine("> it has been excluded and stored in " + newPath + "\\" + export.ObjectName + ".uasset/.uexp for manually editing");
 
-                //Write to file
+                //Write the asset to the desired directory
                 asset.Write(newPath + asset.Exports[0].ObjectName.ToString() + ".uasset");
 
                 //Save settings to a file for later reference
@@ -1620,8 +1668,17 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's PickAxeDigSize is already at the desired size.");
                 Console.WriteLine("This file's PickAxeDigSize is already at the desired size");
 
-                //If so, copy it as-is to the desired directory
-                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+
+                //Check for TM_ResonanceCrystal_Surrounding
+                if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+                {
+                    //If so, copy it as-is to the desired directory
+                    asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+                }
+                else
+                    //If so, copy it as-is to the desired directory
+                    asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+
 
                 //Get out of here
                 return;
@@ -1645,8 +1702,15 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The new value is " + digSize.Value + ".");
                 Console.WriteLine("* The new value is " + digSize.Value + ".");
 
-                //Write the asset to the desired directory
-                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+                //Check for TM_ResonanceCrystal_Surrounding
+                if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+                {
+                    //Write the asset to the desired directory
+                    asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+                }
+                else
+                    //Write the asset to the desired directory
+                    asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
                 //Logging
                 Console.WriteLine("File " + export.ObjectName + " has been saved in: " + outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
@@ -1681,8 +1745,16 @@ void ModifyAssetFloatValues(UAsset asset, NormalExport export)
             if (!Directory.Exists(finalPath))
                 Directory.CreateDirectory(finalPath);
 
-            //Write the asset to the desired directory for later editing and stuff
-            asset.Write(finalPath + export.ObjectName + ".uasset");
+
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + resonanceCrystalNameFix);
+            }
+            else
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + asset.Exports[0].ObjectName + ".uasset");
         }
     }
 }
@@ -1755,8 +1827,15 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is already at the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is already at the desired hits");
 
-            //If so, copy it as-is to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
             //If so, get out of here
             return;
@@ -1774,8 +1853,15 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is bigger than the desired hits");
 
-            //If so, copy it as-is to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
             //Get out of here
             return;
@@ -1792,8 +1878,15 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is already at the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is already at the desired hits");
 
-            //If so, copy it as-is to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
             //If so, get out of here
             return;
@@ -1851,8 +1944,17 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             if (!Directory.Exists(finalPath))
                 Directory.CreateDirectory(finalPath);
 
-            //Write the asset to the desired directory for later editing and stuff
-            asset.Write(finalPath + export.ObjectName + ".uasset");
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + resonanceCrystalNameFix);
+            }
+            else
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + export.ObjectName + ".uasset");
+
+
         }
     }
 
@@ -2071,8 +2173,16 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine is already at the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is already at the desired hits");
 
-            //If so, copy it as-is to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
             //If so, get out of here
             return;
@@ -2090,8 +2200,16 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The original value will be preserved instead of setting it to the desired hits.");
             Console.WriteLine("This file's HitsNeededToMine is bigger than the desired hits");
 
-            //If so, copy it as-is to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
             //Get out of here
             return;
@@ -2201,9 +2319,17 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
                 modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* The new value is " + hitsNeeded.Value + ".");
                 Console.WriteLine("* The new value is " + hitsNeeded.Value + ".");
 
-                //Write the asset to the desired directory
-                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+                //Check for TM_ResonanceCrystal_Surrounding
+                if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+                {
+                    //Write the asset to the desired directory
+                    asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+                }
+                else
+                    //Write the asset to the desired directory
+                    asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
+                //Logging
                 Console.WriteLine("File " + export.ObjectName + " has been saved in: " + outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
             }
             //Otherwise, make a note of it in a file
@@ -2233,8 +2359,15 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
                 if (!Directory.Exists(finalPath))
                     Directory.CreateDirectory(finalPath);
 
-                //Write the asset to the desired directory for later editing and stuff
-                asset.Write(finalPath + export.ObjectName + ".uasset");
+                //Check for TM_ResonanceCrystal_Surrounding
+                if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+                {
+                    //Write the asset to the desired directory for later editing and stuff
+                    asset.Write(finalPath + resonanceCrystalNameFix);
+                }
+                else
+                    //Write the asset to the desired directory for later editing and stuff
+                    asset.Write(finalPath + export.ObjectName + ".uasset");
             }
         }
 
@@ -2266,8 +2399,15 @@ void ModifyAssetIntValues(UAsset asset, NormalExport export)
             if (!Directory.Exists(finalPath))
                 Directory.CreateDirectory(finalPath);
 
-            //Write the asset to the desired directory for later editing and stuff
-            asset.Write(finalPath + export.ObjectName + ".uasset");
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + resonanceCrystalNameFix);
+            }
+            else
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + asset.Exports[0].ObjectName + ".uasset");
         }
     }
 }
@@ -2328,8 +2468,15 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             if (!Directory.Exists(finalPath))
                 Directory.CreateDirectory(finalPath);
 
-            //Write the asset to the desired directory for later editing and stuff
-            asset.Write(finalPath + export.ObjectName + ".uasset");
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + resonanceCrystalNameFix);
+            }
+            else
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + asset.Exports[0].ObjectName + ".uasset");
 
             //Get out of here
             return;
@@ -2346,8 +2493,15 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine and PickAxeDigSize is already at the desired size.");
             Console.WriteLine("This file's HitsNeededToMine and PickAxeDigSize is already at the desired value");
 
-            //If so, copy it as-is to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
             //If so, get out of here
             return;
@@ -2436,9 +2590,18 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             }
         }
 
-        //Make sure in either case that the asset is written to the desired directory
-        asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+        
+        //Check for TM_ResonanceCrystal_Surrounding
+        if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+        {
+            //Make sure in either case that the asset is written to the desired directory
+            asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+        }
+        else
+            //Make sure in either case that the asset is written to the desired directory
+            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
+        //Logging
         Console.WriteLine("File " + export.ObjectName + " has been saved in: " + outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
     }
 
@@ -2694,8 +2857,15 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             if (!Directory.Exists(finalPath))
                 Directory.CreateDirectory(finalPath);
 
-            //Write the asset to the desired directory for later editing and stuff
-            asset.Write(finalPath + export.ObjectName + ".uasset");
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + resonanceCrystalNameFix);
+            }
+            else
+                //Write the asset to the desired directory for later editing and stuff
+                asset.Write(finalPath + asset.Exports[0].ObjectName + ".uasset");
         }
 
         //Check to make sure PickAxeDigSize and HitsNeededToMine aren't already masterDigSize and masterHitsNeeded
@@ -2709,8 +2879,15 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             modifiedFiles[outputPath[whichMod] + "_Reports"][reportFileNames[1]].Add("* This file's HitsNeededToMine and PickAxeDigSize is already at the desired size.");
             Console.WriteLine("This file's HitsNeededToMine and PickAxeDigSize is already at the desired value");
 
-            //If so, copy it as-is to the desired directory
-            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+            //Check for TM_ResonanceCrystal_Surrounding
+            if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+            {
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+            }
+            else
+                //If so, copy it as-is to the desired directory
+                asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
             //If so, get out of here
             return;
@@ -2929,8 +3106,15 @@ void ModifyAssetValues(UAsset asset, NormalExport export)
             }
         }
 
-        //Write the asset to the desired directory
-        asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+        //Check for TM_ResonanceCrystal_Surrounding
+        if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+        {
+            //Write the asset to the desired directory
+            asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+        }
+        else
+            //Write the asset to the desired directory
+            asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
 
         //Logging
         Console.WriteLine("File " + export.ObjectName + " has been saved in: " + outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
