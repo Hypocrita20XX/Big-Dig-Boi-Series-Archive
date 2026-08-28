@@ -20,7 +20,8 @@ The mods themselves can be found here:
 9. [Big Dig Boi - Blackout Stout Edition](https://mod.io/g/drg/m/big-dig-boi-blackout-stout-edition)
 
 
-You can also here the pak files [here](/Files/Working_Archive/Paks) in this repository, and if you want a variation of the mods, you can find those [here](/Files/Working_Archive/Zips/Variations). The files available here and on Mod io are the same version, unless I've made a note in the respective directory's readme concerning an exception.
+You can also here the pak files [here](/Files/Working_Archive/Paks) in this repository, and if you want a variation of the mods, you can find those [here](/Files/Working_Archive/Zips/Variations). <br />
+The files available here and on Mod io are the same version, unless I've made a note in the respective directory's readme concerning an exception.
 
 *The specific changes each mod makes can be found [here](/Files/Working_Archive/Readme.md#changes-for-each-mod)*
 
