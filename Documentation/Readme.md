@@ -145,13 +145,16 @@ if (whichMod == 0)
 				set currentAssetHitsValue to BaseGameValue;
 		
 		if (DigSize == DesiredValue)
-			write unmodified asset > return;
+			check for ResonanceCrystal
+				write unmodified asset with appropriate name > return;
 		else
 			set currentAssetDig to DesiredDigSize;
 
 		If (DigSize != null)
 			set currentAssetDig to DesiredDigSize;
-			write modified asset;
+
+			check for ResonanceCrystal
+				write unmodified asset with appropriate name > return;
 			
 if (whichMod == 1)
 	if (Mineral file)
@@ -181,7 +184,8 @@ if (whichMod == 2)
 
 	if (Mineral file)
 		if (DigSize == DesiredValue)
-			write unmodified asset > return;
+			check for ResonanceCrystal
+				write unmodified asset with appropriate name > return;
 		else
 			set currentAssetDig to DesiredDigSize;
 
@@ -190,18 +194,37 @@ if (whichMod == 2)
 
 	if (Terrain file)
 		if (DigSize == DesiredValue)
-			write unmodified asset > return;
+			wcheck for ResonanceCrystal
+				write unmodified asset with appropriate name > return;
 		else
 			set currentAssetDig to DesiredDigSize;
 
 		If (DigSize != null)
 			set currentAssetDig to DesiredDigSize;
 
-		write modified asset;
+		check for ResonanceCrystal
+				write unmodified asset with appropriate name;
 ```
 Note: none of the actual code that handles this logic is optimized, some of it is probably redundant/unneccessary, and again, it's pretty jank (reviewing the code to write this documentation has made all of this quite obvious. Will I do anything about it? Probably not).
 
-Anyways, like I said, the logic of this function carries over to the other functions that handle file modification, ModifyIntValues() (for HitsNeededToMine) and ModifyAssetValues() (for both properties).
+I should also mention here (because I'm not sure where else to put this information) that there is one single problematic file that needs to be considered: TM_REsonanceCrystal_Surrounding. For some reason, this file gets created as TM_ResonanceCrystal_Surrounding without the capitalized E. This means that the file will not load into the game until that name is reverted. In the above psuedocode, I've added where this check is performed, and its code is virtually identical in all cases:
+```c#
+//Name fix
+string resonanceCrystalNameFix = "TM_REsonanceCrystal_Surrounding";
+
+//Check for TM_ResonanceCrystal_Surrounding
+if (asset.Exports[0].ObjectName.ToString().Contains("TM_ResonanceCrystal_Surrounding"))
+{
+    //If so, copy it as-is to the desired directory
+    asset.Write(outputPath[whichMod] + resonanceCrystalNameFix);
+}
+else
+    //If so, copy it as-is to the desired directory
+    asset.Write(outputPath[whichMod] + asset.Exports[0].ObjectName + ".uasset");
+```
+With the above fix in place, the file is correctly named and can load into the game as intended. It's also worth mentioning that this check is only necessary for the mods that handle terrain file, as TM_REsonanceCrystal_Surrounding is a terrain file.
+
+With that side-note out of the way, like I said, the logic of this function carries over to the other functions that handle file modification, ModifyIntValues() (for HitsNeededToMine) and ModifyAssetValues() (for both properties).
 
 It's probably worth mentioning that all three of these functions run in a few loops that iterate through every file in the Master Archive, with logic to handle which mod(s) the user wants to make. It should be noted that the current version of the program only provides two main options: single mod, or all mods. You can't choose to make only two mods at once, for instance (again, will I fix this? Doubtful).
 The result is, as of the current version of the program, a main directory for all mods containing 2,727 files (included 27 reports I have it write for verification) within 72 different folders.
