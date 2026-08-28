@@ -49,6 +49,8 @@ dotnet add [YourProjectName] package System.Configuration.ConfigurationManager
 ```
 *I don't know why sometimes it's fine without that, and other times it isn't. Visual Studio is just a weird program, I don't know.*<br />
 
+Speaking of Visual Studio weirdness, initially I was stuck with an offline package manager, and couldn't install any Nuget packages. If that happens to you, [this guide](https://rijsat.com/fixed-visual-studio-2022-showing-only-offline-package/) helped sort it out for me.<br />
+
 Other than that, I got unreasonably annoyed with the CS8602 "dereference to a null reference" warning. I get it, I'm using string? to get the user's input through Console.ReadLine(), and yes I know that the value *could* be null. However 1.) I don't care and 2.) the only fix I know of (IE string? meh = "stuff I want" ?? "if null") didn't work in all cases, so I gave up and just suppressed that accursed warning. My sanity thanks me for doing that. 
 Also I literally am assigning this thing a value *and* checking for null in most cases, so just shove it Visual Studio.<br />
 
