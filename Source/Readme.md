@@ -67,6 +67,8 @@ When you first run the program, it will ask you a number of things:
 
 Spaces in the paths are irrelevant, I at least took that into consideration.<br />
 
+After you've run this program once, a new prompt appears at the start asking if you want to reset your settings. Use this if you changed your directories and need to update them. The program is at least smart enough to save what directories you give it.<br />
+
 After that, the program runs a check to make sure all necessary folders are located in your project's root folder, creating them if neccessary (and doing a poor job of logging the information to the console - no I probably won't fix that).<br />
 Pressing enter (it says "press any button" but only enter seems to work) will bring you to the next series of prompts.<br />
 
