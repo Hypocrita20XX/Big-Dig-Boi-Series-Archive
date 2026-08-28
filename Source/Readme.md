@@ -146,6 +146,8 @@ Happy modding miners, rock and stone!
 
 *Thank you Ghost Ship Games for Deep Rock Galactic.*
 
+*I'm sure I've forgotten to mention a number of people, so my apologies. Your work is also greatly appreciated!*
+
 *Lastly, thanks to my best friend, who taught me a long time ago the basics of C#. Without that, I wouldn't have been able to make this mod. Also, he's a great dude.*
 
 ## Shameless Self-Promotion
