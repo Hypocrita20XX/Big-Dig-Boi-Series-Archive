@@ -1,0 +1,53 @@
+** Work-In-Progress! ** 
+** Everything here is subject to change! **
+** Completely untested! **
+
+Changes so far:
+* 000__BDB__Dig_Bigger_Holes__TE
+    > Modified PickAxeDigSize to be 225)
+	
+* 006__BDB__Speedy_Smol_Sons__TE
+    > Modified PickAxeDigSize to be 225
+        * Only Includes these files from this:
+	        > TM_REsonanceCrystal_Surrounding
+	        > TM_CoreRift_Rocks
+	        > TM_CoreRift_Crevace
+	        > TM_CoreRift_Bed
+	        > TM_CoreRift_Growth
+	        > TM_Plague_MeteorImpact_Tunnel
+	        > TM_Plague_MeteorImpact_Hot
+	        > TM_Biome_Plague_Dead
+	        > TM_Biome_Plague_AtMeteor
+	        > TM_Biome_Plague
+	        > TM_Dirt
+	        > TM_Dirt_AzureWeald
+	        > TM_Dirt_DeepCore
+	        > TM_Dirt_GoldTunnel
+	        > TM_Dirt_HollowBough
+	        > TM_Dirt_IceCaves
+	        > TM_Dirt_InvisTest_DecayedBough
+	        > TM_Dirt_LairTunnel
+	        > TM_Dirt_SandblastedCorridors
+	        > TM_Dirt_SwarmerTunnels
+	        > TM_Heartstone_CrystalTrap
+	        > TM_Heartstone_DefensiveCrystal
+	        > TM_SpawnedPlatform
+	        > TM_SpawnedPlatform_BugRepellant
+	        > TM_SpawnedPlatform_FallDmg_BugRepellant
+	        > TM_SpawnedPlatform_LowFallDamage
+			
+* 007__BDB__Speedy_Smol_Sons__ME
+    > Modified PickAxeDigSize to be 180)
+	
+* 001_BDE_Electrobegone
+    > No Changes: still MaxHealth value of 10
+	
+* 000_BDE_Drill_Boi_Drill
+    > DamageRate: 8 > 10
+	> MovementSpeed: 0.5 > 0.75 (only 25% reduction instead of 50%)
+	> CarveSize: [150/200/220] > [200/250/270]
+	> MaxFuel: 38 > 19
+	> CooldownRate: 2 > 3
+	> StaggerChance: 0.25 > 0.5
+	> StaggerDuration: 1 > 2
+	> FearFactor: 0.5 > 0.75
