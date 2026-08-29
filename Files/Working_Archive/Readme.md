@@ -1,4 +1,4 @@
-# Working Archive For The Big Dig Boi Series Of Mods
+# Working Archive For The Big Dig Series Of Mods
 
 This is an archive for every mod's unpacked files in the Big Dig Boi series, as well as the paks and zips for each one.
 Use DRGPacker to get them into a pak that you can install in your game using Mint.
@@ -10,7 +10,7 @@ There are some related wrappers made by [Mythical-Github](https://github.com/Myt
 There is also a GUI for Repak made by [AriesLR](https://github.com/AriesLR) that can be found [here](https://github.com/AriesLR/PakMaster).
 
 
-## Changes For Each Mod
+## Changes For Each Mod In The Big Dig Boi Series:
 
 1. Big Dig Boi - Dig Bigger Holes (Terrain Edition)
     - *Changes: PickAxeDigSize of 180, HitsNeededToMine unaffected, affects only terrain*
