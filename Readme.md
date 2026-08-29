@@ -8,7 +8,7 @@ I've also decided to store all relevant assets here too.
 
 **Against my better judgement, I've made executables for the program. These are also provided as-is and I make no promises that they will work as intended, or that they won't do something bad to your computer. Please read this [basic operation guide](/Source/Readme.md#basic-operation) before you try running the program!**
 
-The mods themselves for the main series can be found here:
+The mods themselves for the Big Dig Boi series can be found here:
 1. [Big Dig Boi - Dig Bigger Holes (Terrain Edition)](https://mod.io/g/drg/m/big-dig-boi-dig-bigger-holes)
 2. [Big Dig Boi - Dig Bigger Holes (Mineral Edition)](https://mod.io/g/drg/m/big-dig-boi-dig-bigger-holes-mineral-edition)
 3. [Big Dig Boi - Underhill Deluxe Edition](https://mod.io/g/drg/m/big-dig-boi-underhill-deluxe)
@@ -18,15 +18,19 @@ The mods themselves for the main series can be found here:
 7. [Big Dig Boi - Speedy Smol Sons (Terrain Edition)](https://mod.io/g/drg/m/big-dig-boi-speedy-smol-sons-terrain-edition)
 8. [Big Dig Boi - Speedy Smol Sons (Mineral Edition)](https://mod.io/g/drg/m/big-dig-boi-speedy-smol-sons-mineral-edition)
 9. [Big Dig Boi - Blackout Stout Edition](https://mod.io/g/drg/m/big-dig-boi-blackout-stout-edition)
+10. Big Dig Boi - Hypocrita's Edition (Soon)
 
-The mods for the sub-series can be found here:
-1. [Big Dig Extra - Electrobegone](https://mod.io/g/drg/m/big-dig-extra-electrobegone) <br /><br />
+The mods for the Big Dig Extra series can be found here:
+1. Big Dig Boi - Drill Boi Drill (Soon)
+2. [Big Dig Extra - Electrobegone](https://mod.io/g/drg/m/big-dig-extra-electrobegone) <br /><br />
 
 
-You can also here the pak files [here](/Files/Working_Archive/Paks) in this repository, and if you want a variation of the mods, you can find those [here](/Files/Working_Archive/Zips/Variations). <br />
-The files available here and on Mod io are the same version, unless I've made a note in the respective directory's readme concerning an exception.
 
-*The specific changes each mod makes can be found [here](/Files/Working_Archive/Readme.md#changes-for-each-mod)*
+You can also find the pak files [here](/Files/Working_Archive/Paks) in this repository, and if you want a variation of the mods, you can find those [here](/Files/Working_Archive/Zips/Variations). <br />
+The files available on the repository and on Mod io are the same version, unless I've made a note in the respective directory's readme concerning an exception.<br/><br/>
+
+*The specific changes each mod in the Big Dig Boi series makes can be found [here](/Files/Working_Archive/Readme.md#changes-for-each-mod)*<br/>
+*The changes each mod in the Big Dig Extra series makes can be found [here](/Files/Working_Archive/Extra/Readme.md)*
 
 ## Credits
 

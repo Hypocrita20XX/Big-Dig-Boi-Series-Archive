@@ -1,14 +1,9 @@
-** Work-In-Progress! ** 
-** Everything here is subject to change! **
-** Completely untested! **
-
-Changes so far:
 * 000__BDB__Dig_Bigger_Holes__TE
-    > Modified PickAxeDigSize to be 225)
+    > Modified PickAxeDigSize to be 225, includes most files from this mod
 	
-* 006__BDB__Speedy_Smol_Sons__TE
+* 006__BDB__Speedy_Smol_Sons__TE:
     > Modified PickAxeDigSize to be 225
-        * Only Includes these files from this:
+        *Only Includes these files from this mod, overwriting those in 000__BDB__Dig_Bigger_Holes__TE::
 	        > TM_REsonanceCrystal_Surrounding
 	        > TM_CoreRift_Rocks
 	        > TM_CoreRift_Crevace
@@ -36,5 +31,11 @@ Changes so far:
 	        > TM_SpawnedPlatform_FallDmg_BugRepellant
 	        > TM_SpawnedPlatform_LowFallDamage
 			
-* 007__BDB__Speedy_Smol_Sons__ME
-    > Modified PickAxeDigSize to be 180)
+* 007__BDB__Speedy_Smol_Sons__ME:
+    > No Changes from original mod, all files included
+	
+* 001_BDE_Electrobegone:
+    > No Changes from original mod, all files included
+	
+* 000_BDE_Drill_Boi_Drill:
+    > No Changes from original mod, all files included
