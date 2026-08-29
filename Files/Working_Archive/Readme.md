@@ -30,6 +30,8 @@ There is also a GUI for Repak made by [AriesLR](https://github.com/AriesLR) that
     - *Changes: PickAxeDigSize of 180, HitsNeededToMine of 1, affects only minerals*
 9. Big Dig Boi - Blackout Stout Edition
     - *Changes: PickAxeDigSize of 180, HitsNeededToMine of 1, affects minerals and terrain*
+10. Big Dig Boi - Hypocrita's Edition
+	- *Documentation Soon, still very much work-in-progress, pre-release: stored here as a backup*
 
 *By the way, you can mix and match mods based on your preferences. So for example, you can pair Dig Bigger Holes (Terrain Edition) with Speedy Smol Sons (Mineral Edition) and they will work just fine together because they don't change the same files. Just take the mod you want for your terrain files, get the one you want for minerals, and bam, you've got your own custom Big Dig Boi experience!*
 **It should be noted that the combination mods (Underhill Deluxe, Rocky Mountain Ale, and Blackout Stout Editions) are meant to be used on their own.**
