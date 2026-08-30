@@ -21,7 +21,7 @@ The mods themselves for the Big Dig Boi series can be found here:
 10. Big Dig Boi - Hypocrita's Edition (Soon)
 
 The mods for the Big Dig Extra series can be found here:
-1. Big Dig Boi - Drill Boi Drill (Soon)
+1. [Big Dig Boi - Drill Boi Drill](https://mod.io/g/drg/m/big-dig-extra-drill-boi-drill)
 2. [Big Dig Extra - Electrobegone](https://mod.io/g/drg/m/big-dig-extra-electrobegone) <br /><br />
 
 
