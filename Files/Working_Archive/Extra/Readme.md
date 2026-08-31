@@ -6,10 +6,12 @@ These mods were made manually using UAssetGUI.
 
 1. Big Dig Extra - Drill Boi Drill
     - *Changes WPN_DoubleDrills:*
-		- *DamageRate: 8 > 10*
+		- *DamageRate: 8 > 4*
+		- *EquipDuration: 0.5 > 0.25
 		- *MovementSpeed: 0.5 > 0.8*
 		- *CarveSize: 150/200/220 > 200/250/270*
-		- *MaxFuel: 38 > 60*
+		- *MaxFuel: 38 > 80*
+		- *FuelUsePerMelee: 3.2 > 1
 		- *CooldownRate: 2 > 3*
 		- *StaggerChance: 0.25 > 0.5*
 		- *StaggerDuration: 1 > 2*
