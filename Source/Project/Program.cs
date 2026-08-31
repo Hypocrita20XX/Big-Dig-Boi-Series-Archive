@@ -174,7 +174,7 @@ if (UserSettings.Default.BaseFilesLocation != "")
         UserSettings.Default.Reset();
 
         Console.WriteLine("Settings have been reset");
-        Console.WriteLine("Press any button to continue");
+        Console.WriteLine("Press enter to continue");
         Console.ReadLine();
 
 
@@ -186,7 +186,7 @@ if (UserSettings.Default.BaseFilesLocation != "")
     else
     {
         Console.WriteLine("Settings won't be reset");
-        Console.WriteLine("Press any button to continue");
+        Console.WriteLine("Press enter to continue");
         Console.ReadLine();
 
 
@@ -398,7 +398,7 @@ if (shouldCreateMaster)
 Console.WriteLine("Work will now begin on making the desired mod(s)");
 
 //Wait for input
-Console.WriteLine("Press any button to bring processing");
+Console.WriteLine("Press enter to begin processing");
 Console.ReadLine();
 
 //Clear the console
@@ -540,7 +540,7 @@ void GetRequiredInput()
         Console.WriteLine("");
 
         //Wait for input
-        Console.WriteLine("Press any button to proceed");
+        Console.WriteLine("Press enter to proceed");
         Console.ReadLine();
     }
     //If not, prompt for each directory and make sure it's saved for next time
@@ -671,7 +671,7 @@ void GetRequiredInput()
             Console.WriteLine("> " + dir);
 
         //Wait for input
-        Console.WriteLine("Press any button to proceed");
+        Console.WriteLine("Press enter to proceed");
         Console.ReadLine();
     }
 
@@ -714,7 +714,7 @@ void GetRequiredInput()
         Console.WriteLine("-1 has been selected, the program will now exit");
 
         //Verify
-        Console.WriteLine("Press any button to exit");
+        Console.WriteLine("Press enter to exit");
 
         //Wait for input
         Console.ReadLine();
@@ -732,7 +732,7 @@ void GetRequiredInput()
         Console.WriteLine("* Base game default value: 105");
         Console.WriteLine("* My original value: 225");
         Console.WriteLine("* The public mods' value: 180");
-        Console.WriteLine("* For reference, drills have a dig size of 150 (depth) and 200/200 (width/height)");
+        Console.WriteLine("* For reference, drills have a dig size of 150 (depth) and 200/220 (width/height)");
 
         //Store input in tmp string
         tmp = Console.ReadLine();
@@ -811,7 +811,7 @@ void GetRequiredInput()
     Console.WriteLine("");
 
     //Wait for input before continuing
-    Console.WriteLine("Press any button to continue");
+    Console.WriteLine("Press enter to continue");
     Console.ReadLine();
 }
 
@@ -1023,7 +1023,7 @@ void CreateAssets()
     {
         //Get all uassets in Landscape\Materials and their associated directory
         //Main directory: /Materials
-        foreach (string file in Directory.EnumerateFiles(inputPath, "*.uasset", SearchOption.AllDirectories))
+        foreach (string file in Directory.EnumerateFiles(UserSettings.Default.MasterArchiveLocation, "*.uasset", SearchOption.AllDirectories))
         {
             //Create a new UAsset for this file
             UAsset currentAsset = new UAsset(file, EngineVersion.VER_UE4_27);
@@ -1068,7 +1068,7 @@ void CreateAssets()
             //Set whichMod to i
             whichMod = i;
 
-            foreach (string file in Directory.EnumerateFiles(inputPath, "*.uasset", SearchOption.AllDirectories))
+            foreach (string file in Directory.EnumerateFiles(UserSettings.Default.MasterArchiveLocation, "*.uasset", SearchOption.AllDirectories))
             {
                 //Create a new UAsset for this file
                 UAsset currentAsset = new UAsset(file, EngineVersion.VER_UE4_27);
@@ -1107,7 +1107,7 @@ void CreateAssets()
     Console.WriteLine("All files have been modified");
     Console.WriteLine("All relevant information will now be written to the appropriate file(s)");
     Console.WriteLine("");
-    Console.WriteLine("Please press any button to proceed");
+    Console.WriteLine("Please Press enter to proceed");
 
     //Wait for input
     Console.ReadLine();
@@ -1124,6 +1124,10 @@ void CreateAssets()
 
     //Write all exlusions to a file
     WriteToFile(reportFileNames[2], excludedFiles);
+
+    //Wait for input
+    Console.WriteLine("Press enter to continue");
+    Console.ReadLine();
 }
 
 //Function that takes in a UAsset, NormalExport, string for the property data name
@@ -3233,13 +3237,13 @@ void PakFiles()
         //At least in my brain, seems like it would make the path something like "F:\DRG_Modding\Mods\BigDigBoi Series\_Main
         //instead of "F:\DRG_Modding\Mods\BigDigBoi Series\_Main" which is how spaces are properly handled in the command prompt
         //I don't know, it just works, so I'm going with it
-        fullPath = "\"" + outputPath[whichMod];
-
-        //Create the argument needed to make this mod's pak file
-        process.StartInfo.Arguments = " pack " + fullPath;
+        fullPath = "\"" + mainPathP4;
 
         //Logging
         Console.WriteLine("Packing file " + outputPath[whichMod] + "...");
+
+        //Create the argument needed to make this mod's pak file
+        process.StartInfo.Arguments = " pack " + fullPath;
 
         //Start the process
         process.Start();
@@ -3318,14 +3322,14 @@ void PakFiles()
     MoveToFolder(pakFiles, "\\_Paks", ".pak");
 
     //Wait for input
-    Console.WriteLine("Press any button to continue");
+    Console.WriteLine("Press enter to continue");
     Console.ReadLine();
 
     //Create a zip archive for these pak files
     ZipFiles(mainPathP5, pakFiles);
 
     //Wait for input
-    Console.WriteLine("Press any button to continue");
+    Console.WriteLine("Press enter to continue");
     Console.ReadLine();
 
     //Clear the console
@@ -3415,7 +3419,7 @@ void ZipFiles(string mainPath, Dictionary<string, List<string>> paks)
 
     //Logging
     Console.WriteLine("All zip files have been created");
-    Console.WriteLine("Press any button to continue");
+    Console.WriteLine("Press enter to continue");
 
     //Wait for input
     Console.ReadLine();
