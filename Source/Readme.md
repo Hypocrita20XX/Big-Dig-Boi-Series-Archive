@@ -70,7 +70,7 @@ Spaces in the paths are irrelevant, I at least took that into consideration.<br 
 After you've run this program once, a new prompt appears at the start asking if you want to reset your settings. Use this if you changed your directories and need to update them. The program is at least smart enough to save what directories you give it.<br />
 
 After that, the program runs a check to make sure all necessary folders are located in your project's root folder, creating them if neccessary (and doing a poor job of logging the information to the console - no I probably won't fix that).<br />
-Pressing enter (it says "press any button" but only enter seems to work) will bring you to the next series of prompts.<br />
+Pressing enter will bring you to the next series of prompts.<br />
 
 The first asks you which mod(s) you want to make. Note that there are only two operating mods: single and all. So if you want to make 0 and 3 at once, for instance, you're out of luck. You'll have to run the program once to make 0, then again to make 3. It's not great, honestly. Also -1 is pointless because that just ends the program, and you can just close the program yourself if you don't want to do anything. I don't know why I added it as an option.<br />
 
@@ -82,7 +82,7 @@ If 3, 4, or 5 is selected, you'll only be prompted for hits needed with dig size
 100 means every mod variation will be created, so you'll be prompted to enter values for both properties.<br />
 This probably could be done with a string, or some such, but I used an int specifically because I use this variable as an index in various parts of the code to iterate through paths.<br />
 
-Once you've done that, pressing "any button" (enter) will start a verification check of the unedited base game's files. This is needed to verify the Master Archive so that you only get exactly the changes you want, and nothing you don't want. If a property is not readily available in a file (IE TM_Umanite) then it's assumed that it's values are default (In the case of Umanite, it's default for dig size is 105 and hits needed is 2).<br />
+Once you've done that, pressing enter will start a verification check of the unedited base game's files. This is needed to verify the Master Archive so that you only get exactly the changes you want, and nothing you don't want. If a property is not readily available in a file (IE TM_Umanite) then it's assumed that it's values are default (In the case of Umanite, it's default for dig size is 105 and hits needed is 2).<br />
 
 There's a lot to unpack regarding this verification check and why the Master Archive is needed. I've already covered it in the documentation though, so check it out [here](/Documentation/Readme.md#the-master-archive "documentation").<br />
 
