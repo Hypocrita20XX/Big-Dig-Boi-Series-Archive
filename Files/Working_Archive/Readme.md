@@ -66,11 +66,11 @@ I personally could only get Repak to work on its own through the command line, b
 					- *TM_SpawnedPlatform_FallDmg_BugRepellant*
 					- *TM_SpawnedPlatform_LowFallDamage*
 		- *007__BDB__Speedy_Smol_Sons__ME*
-			- *No Changes from original mod, all files included*
+			- *No changes from original mod, all files included*
 		- *001_BDE_Electrobegone*
-			- *No Changes from original mod, all files included*
+			- *No changes from original mod, all files included*
 		- *000_BDE_Drill_Boi_Drill*
-			- *No Changes from original mod, all files included*<br/><br/>
+			- *No changes from original mod, all files included*<br/><br/>
 
 *By the way, you can mix and match mods based on your preferences. So for example, you can pair Dig Bigger Holes (Terrain Edition) with Speedy Smol Sons (Mineral Edition) and they will work just fine together because they don't change the same files. Just take the mod you want for your terrain files, get the one you want for minerals, and bam, you've got your own custom Big Dig Boi experience!*
 **It should be noted that the combination mods (Underhill Deluxe Edition, Rocky Mountain Ale Edition, Blackout Stout Edition, and Hypocrita's Edition) are meant to be used on their own.**<br/><br/>
