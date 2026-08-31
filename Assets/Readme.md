@@ -49,4 +49,4 @@ A bit of color adjusting, outlines, a fair bit of editing, masking, and getting 
 
 And the rest, they say, is history:
 
-![Big Dig Boi Logo](/Assets/bigdigboi_logo_var1_nobg.png)
+![Big Dig Boi Logo](/Assets/Logos/bigdigboi_logo_var1_nobg.png)
