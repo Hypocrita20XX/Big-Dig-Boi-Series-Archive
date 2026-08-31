@@ -18,7 +18,7 @@ The mods themselves for the Big Dig Boi series can be found here:
 7. [Big Dig Boi - Speedy Smol Sons (Terrain Edition)](https://mod.io/g/drg/m/big-dig-boi-speedy-smol-sons-terrain-edition)
 8. [Big Dig Boi - Speedy Smol Sons (Mineral Edition)](https://mod.io/g/drg/m/big-dig-boi-speedy-smol-sons-mineral-edition)
 9. [Big Dig Boi - Blackout Stout Edition](https://mod.io/g/drg/m/big-dig-boi-blackout-stout-edition)
-10. Big Dig Boi - Hypocrita's Edition (Soon)
+10. [Big Dig Boi - Hypocrita's Edition](https://mod.io/g/drg/m/big-dig-boi-hypocritas-edition)
 
 The mods for the Big Dig Extra series can be found here:
 1. [Big Dig Boi - Drill Boi Drill](https://mod.io/g/drg/m/big-dig-extra-drill-boi-drill)
