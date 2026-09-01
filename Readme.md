@@ -1,5 +1,8 @@
 ![Big Dig Boi Logo](Assets/Logos/bigdigboi_logo_var1_nobg.png)
 
+**Effective 8/31/2026:** *This project, its source, and all works contained in this archive are now licensed under GNU GPL v3 or later. I'll be updating documentation, source, and all related materials to reflect this change as soon as I'm able to.*<br/><br/>
+
+
 Here is where I've stored the code that allows me to make and update the Big Dig Boi series of mods for the game [Deep Rock Galactic](https://store.steampowered.com/app/548430/Deep_Rock_Galactic/).
 I've also decided to store all relevant assets here too.
 
